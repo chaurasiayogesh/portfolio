@@ -112,11 +112,11 @@
         }
     </style>
 </head>
-<body class="bg-slate-950 text-slate-100 font-sans antialiased selection:bg-brand-500 selection:text-white min-h-screen flex flex-col justify-between overflow-x-hidden">
+<body class="overflow-x-hidden bg-slate-950 text-slate-100 font-sans antialiased selection:bg-brand-500 selection:text-white min-h-screen flex flex-col justify-between overflow-x-hidden">
 
     <!-- EXECUTIVE NAVIGATION HEADER -->
     <header class="no-print sticky top-0 z-50 glass-panel border-b border-slate-800 px-4 py-3 sm:px-8" role="banner">
-        <div class="container max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-4">
+        <div class="container max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-4 overflow-x-hidden">
             
             <!-- Branding / Candidate Info -->
             <div class="flex items-center space-x-3">
@@ -135,7 +135,7 @@
             </div>
 
             <!-- View Switcher & Dropdown Controls -->
-            <div class="flex items-center space-x-2 bg-slate-900/90 p-1.5 rounded-xl border border-slate-800">
+          <div class="flex items-center gap-2 flex-wrap max-w-full overflow-hidden bg-slate-900/90 p-1.5 rounded-xl border border-slate-800">
                 <button id="deckModeBtn" onclick="setMode('deck')" aria-label="Switch to Slide Deck Mode" class="px-3 py-1.5 rounded-lg text-xs font-semibold transition-all duration-200 bg-brand-600 text-white shadow-md cursor-pointer focus:ring-2 focus:ring-brand-500">
                     <i class="fa-solid fa-layer-group mr-1.5" aria-hidden="true"></i> Deck Mode
                 </button>
@@ -146,7 +146,7 @@
                 <div class="h-4 w-[1px] bg-slate-800 mx-1" aria-hidden="true"></div>
 
                 <!-- Page Dropdown (16 Pages) -->
-                <select id="slideSelector" onchange="jumpToSlide(parseInt(this.value))" aria-label="Select Presentation Page" class="bg-slate-950 text-slate-200 text-xs rounded-lg px-2 py-1.5 border border-slate-800 focus:outline-none focus:border-brand-500 cursor-pointer max-w-[210px] sm:max-w-xs">
+                <select id="slideSelector" onchange="jumpToSlide(parseInt(this.value))" aria-label="Select Presentation Page" class="bg-slate-950 text-slate-200 text-xs rounded-lg px-2 py-1.5 border border-slate-800 focus:outline-none focus:border-brand-500 cursor-pointer w-full sm:w-auto max-w-full min-w-0">
                     <option value="0">Page 1: Title & Overview</option>
                     <option value="1">Page 2: Full Marketing Scope</option>
                     <option value="2">Page 3: Brand Positioning & Naya KDMC</option>
