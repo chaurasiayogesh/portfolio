@@ -28,35 +28,34 @@
             theme: {
                 extend: {
                     colors: {
-                        execBg: '#070B14',
-                        execSurface: '#0D1422',
-                        execSurfaceElevated: '#111B2E',
-                        execGold: '#D4AF5A',
-                        execGoldLight: '#F1D58A',
-                        execBlue: '#3B82F6',
-                        execGreen: '#34D399',
-                        execWarning: '#F59E0B',
+                        execBg: '#F5F1E8',
+                        execSurface: '#FBFAF6',
+                        execSurfaceElevated: '#172033',
+                        execGold: '#A88432',
+                        execGoldLight: '#C5A24A',
+                        execBlue: '#2563EB',
+                        execGreen: '#15803D',
                         brand: {
-                            50: '#f4f6f8',
-                            100: '#e2e8f0',
-                            400: '#34d399',
-                            500: '#D4AF5A',
-                            600: '#b38f38',
-                            800: '#1e293b',
-                            900: '#0f172a',
+                            50: '#f8fafc',
+                            100: '#f1f5f9',
+                            400: '#15803d',
+                            500: '#A88432',
+                            600: '#8f6f27',
+                            800: '#334155',
+                            900: '#172033',
                         },
                         gold: {
-                            300: '#F1D58A',
-                            400: '#D4AF5A',
-                            500: '#c29b46',
-                            600: '#a38036',
-                            700: '#7a5f25',
-                            950: '#161d2a'
+                            300: '#C5A24A',
+                            400: '#A88432',
+                            500: '#8f6f27',
+                            600: '#755a1f',
+                            700: '#5c4518',
+                            950: '#172033'
                         },
                         slate: {
-                            850: '#0d1422',
-                            900: '#0a0f1d',
-                            950: '#070b14',
+                            850: '#172033',
+                            900: '#0b1120',
+                            950: '#F5F1E8',
                         }
                     },
                     fontFamily: {
@@ -73,146 +72,147 @@
     
     <style>
         :root {
-            --exec-bg: #070B14;
-            --exec-surface: #0D1422;
-            --exec-surface-elevated: #111B2E;
-            --exec-text: #F8FAFC;
-            --exec-text-secondary: #A8B3C5;
-            --exec-text-muted: #718096;
-            --exec-gold: #D4AF5A;
-            --exec-gold-light: #F1D58A;
-            --exec-blue: #3B82F6;
-            --exec-green: #34D399;
-            --exec-warning: #F59E0B;
-            --exec-border: rgba(255, 255, 255, 0.08);
+            --exec-bg: #F5F1E8;
+            --exec-surface: #FBFAF6;
+            --exec-surface-elevated: #172033;
+            --exec-text: #172033;
+            --exec-text-secondary: #475569;
+            --exec-text-muted: #64748B;
+            --exec-gold: #A88432;
+            --exec-gold-light: #C5A24A;
+            --exec-blue: #2563EB;
+            --exec-green: #15803D;
+            --exec-border: rgba(23, 32, 51, 0.12);
+            --mobile-nav-height: 56px;
         }
 
-        /* Ambient Architectural Mesh Glow */
+        /* Subtle Premium Editorial Paper Background Texture */
         body {
             background-color: var(--exec-bg);
+            color: #172033;
             position: relative;
         }
 
         body::before {
             content: '';
             position: fixed;
-            top: -10%;
-            left: -10%;
-            width: 120%;
-            height: 120%;
-            background-image: 
-                radial-gradient(circle at 15% 15%, rgba(212, 175, 90, 0.06) 0px, transparent 40%),
-                radial-gradient(circle at 85% 25%, rgba(59, 130, 246, 0.05) 0px, transparent 45%),
-                radial-gradient(circle at 50% 85%, rgba(52, 211, 153, 0.04) 0px, transparent 50%);
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            background-image: radial-gradient(rgba(23, 32, 51, 0.025) 1px, transparent 0);
+            background-size: 24px 24px;
+            opacity: 0.5;
             pointer-events: none;
-            z-index: -1;
-            animation: ambientGlow 18s ease-in-out infinite alternate;
+            z-index: 1;
         }
 
-        @keyframes ambientGlow {
-            0% { transform: translate(0, 0) scale(1); }
-            50% { transform: translate(20px, 25px) scale(1.02); }
-            100% { transform: translate(-15px, 15px) scale(0.99); }
+        @media print {
+            body::before { display: none !important; }
         }
 
-        /* Executive Glassmorphism Tokens */
+        /* Executive Glassmorphism & Paper Panels */
         .glass-panel {
-            background: rgba(13, 20, 34, 0.82);
+            background: rgba(245, 241, 232, 0.94);
             backdrop-filter: blur(16px);
             -webkit-backdrop-filter: blur(16px);
-            border: 1px solid var(--exec-border);
-            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.45);
+            border: 1px solid rgba(23, 32, 51, 0.12);
+            box-shadow: 0 4px 20px -5px rgba(23, 32, 51, 0.08);
         }
         .glass-panel-gold {
-            background: rgba(17, 27, 46, 0.88);
+            background: rgba(23, 32, 51, 0.96);
             backdrop-filter: blur(16px);
-            border: 1px solid rgba(212, 175, 90, 0.3);
-            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.45);
+            border: 1px solid rgba(168, 132, 50, 0.4);
+            box-shadow: 0 10px 30px -10px rgba(23, 32, 51, 0.3);
+            color: #F8FAFC;
         }
         .glass-panel-brand {
-            background: rgba(13, 20, 34, 0.88);
+            background: rgba(245, 241, 232, 0.95);
             backdrop-filter: blur(16px);
-            border: 1px solid rgba(212, 175, 90, 0.25);
-            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.45);
+            border: 1px solid rgba(168, 132, 50, 0.3);
+            box-shadow: 0 4px 20px -5px rgba(23, 32, 51, 0.08);
         }
 
-        /* High Contrast Editorial Typography Gradients */
+        /* Editorial Ink Typography Gradients */
         .gold-gradient-text {
-            background: linear-gradient(135deg, #FFFDF5 0%, #F1D58A 50%, #D4AF5A 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            color: #A88432;
             display: inline-block;
         }
         .brand-gradient-text {
-            background: linear-gradient(135deg, #FFFDF5 0%, #F1D58A 50%, #D4AF5A 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            color: #A88432;
             display: inline-block;
         }
         .cyan-gradient-text {
-            background: linear-gradient(135deg, #FFFFFF 0%, #93C5FD 50%, #3B82F6 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            color: #2563EB;
             display: inline-block;
         }
 
-        /* Global Executive Typography Hierarchy Rules (Dark Background Context) */
+        /* Global Editorial Typography Hierarchy Rules */
         .slide-eyebrow,
         .slide-card .slide-eyebrow {
-            color: #D4AF5A !important;
+            color: #A88432 !important;
             font-weight: 700 !important;
+            font-size: 0.6875rem !important;
+            letter-spacing: 0.1em !important;
         }
 
         .slide-title,
         .slide-card h2,
         .slide-card h1 {
-            color: #F8FAFC !important;
-            font-weight: 700 !important;
+            color: #172033 !important;
+            font-weight: 800 !important;
+            font-size: clamp(1.625rem, 3.5vw, 2.5rem) !important;
+            line-height: 1.15 !important;
+            letter-spacing: -0.01em !important;
         }
 
         .slide-subtitle,
         .slide-card h2 + p,
         .slide-card p.text-slate-300 {
-            color: #CBD5E1 !important;
+            color: #475569 !important;
+            font-size: 0.8125rem !important;
+            line-height: 1.55 !important;
         }
 
         .slide-meta,
         .slide-card .slide-meta {
-            color: #CBD5E1 !important;
+            color: #64748B !important;
         }
 
-        /* Glass Panel Card Typography Context */
-        .glass-panel h3,
-        .glass-panel-gold h3,
-        .glass-panel-brand h3 {
+        /* Featured Dark Navy Surface Typography Context */
+        .surface-featured h2,
+        .surface-featured h3,
+        .surface-featured h4,
+        .surface-card-elevated h2,
+        .surface-card-elevated h3 {
             color: #F8FAFC !important;
         }
 
-        .glass-panel p,
-        .glass-panel-gold p,
-        .glass-panel-brand p {
+        .surface-featured p,
+        .surface-card-elevated p {
             color: #CBD5E1 !important;
         }
 
-        /* Executive Flat Surface System (3 Hierarchy Levels Only) */
+        /* 3 Editorial Surface Levels */
         .surface-editorial {
             background: transparent;
             border: none;
             box-shadow: none;
         }
         .surface-card, .surface-evidence {
-            background: #0D1422;
-            border: 1px solid rgba(255, 255, 255, 0.08);
+            background: #FBFAF6;
+            border: 1px solid rgba(23, 32, 51, 0.10);
             border-radius: 1rem;
+            box-shadow: 0 2px 6px -1px rgba(23, 32, 51, 0.04);
         }
         .surface-card-elevated, .surface-featured {
-            background: #111B2E;
-            border: 1px solid rgba(212, 175, 90, 0.35);
+            background: #172033;
+            border: 1px solid rgba(168, 132, 50, 0.4);
             border-radius: 1rem;
-            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.4);
+            color: #F8FAFC;
+            box-shadow: 0 10px 25px -5px rgba(23, 32, 51, 0.2);
         }
 
-        /* Verification Micro-Labels */
+        /* Evidence Micro-Labels */
         .evidence-tag {
             display: inline-flex;
             align-items: center;
@@ -222,28 +222,28 @@
             font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
             font-size: 10px;
             font-weight: 600;
-            color: #F1D58A;
-            background: rgba(212, 175, 90, 0.12);
-            border: 1px solid rgba(212, 175, 90, 0.25);
+            color: #8A6820;
+            background: rgba(168, 132, 50, 0.10);
+            border: 1px solid rgba(168, 132, 50, 0.25);
         }
 
         /* Mode Button Active & Inactive States */
         .mode-btn {
-            color: #CBD5E1 !important;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.08);
+            color: #475569 !important;
+            background: #FBFAF6;
+            border: 1px solid rgba(23, 32, 51, 0.12);
             transition: all 0.2s ease;
         }
         .mode-btn:hover {
-            color: #F8FAFC !important;
-            border-color: rgba(212, 175, 90, 0.4);
+            color: #172033 !important;
+            border-color: rgba(168, 132, 50, 0.4);
         }
         .mode-btn.active {
-            color: #070B14 !important;
-            background: linear-gradient(135deg, #F1D58A 0%, #D4AF5A 100%) !important;
+            color: #F8FAFC !important;
+            background: #172033 !important;
             font-weight: 700 !important;
-            border-color: transparent !important;
-            box-shadow: 0 4px 12px rgba(212, 175, 90, 0.25);
+            border-color: #172033 !important;
+            box-shadow: 0 4px 12px rgba(23, 32, 51, 0.15);
         }
 
         /* Dynamic Navigation Height Contract Tokens & Safe Area */
@@ -306,7 +306,7 @@
         #deckControls button:focus-visible,
         #deckControls select:focus-visible,
         header button:focus-visible {
-            outline: 2px solid #F1D58A !important;
+            outline: 2px solid #A88432 !important;
             outline-offset: 3px !important;
         }
 
@@ -391,20 +391,93 @@
             transform: scale(1.04);
         }
 
-        /* Custom Dark Scrollbar */
+        /* Custom Editorial Scrollbar — ivory paper theme */
         ::-webkit-scrollbar {
-            width: 6px;
-            height: 6px;
+            width: 5px;
+            height: 5px;
         }
         ::-webkit-scrollbar-track {
-            background: #070B14;
+            background: #E8E3D8;
         }
         ::-webkit-scrollbar-thumb {
-            background: #1e293b;
+            background: rgba(23, 32, 51, 0.25);
             border-radius: 9999px;
         }
         ::-webkit-scrollbar-thumb:hover {
-            background: #D4AF5A;
+            background: #A88432;
+        }
+
+        /* Editorial Rhythm Helper Classes */
+        .metric-display {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: clamp(2rem, 4.5vw, 3.25rem);
+            font-weight: 800;
+            line-height: 1;
+            letter-spacing: -0.02em;
+        }
+        .metric-display-sm {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: clamp(1.5rem, 3vw, 2rem);
+            font-weight: 800;
+            line-height: 1;
+            letter-spacing: -0.02em;
+        }
+        .phase-number {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: clamp(3rem, 6vw, 5rem);
+            font-weight: 800;
+            line-height: 0.85;
+            letter-spacing: -0.04em;
+            opacity: 0.10;
+            user-select: none;
+        }
+        .slide-accent-panel {
+            background: #EEE9DE;
+            border: 1px solid rgba(23, 32, 51, 0.10);
+            border-top: 3px solid rgba(168, 132, 50, 0.7);
+            border-radius: 1rem;
+            box-shadow: 0 2px 8px -2px rgba(23, 32, 51, 0.05);
+        }
+        .slide-accent-panel-blue {
+            background: #EEE9DE;
+            border: 1px solid rgba(23, 32, 51, 0.10);
+            border-top: 3px solid rgba(37, 99, 235, 0.6);
+            border-radius: 1rem;
+        }
+        .slide-accent-panel-green {
+            background: #EEE9DE;
+            border: 1px solid rgba(23, 32, 51, 0.10);
+            border-top: 3px solid rgba(21, 128, 61, 0.6);
+            border-radius: 1rem;
+        }
+        /* Pipeline panel (light version — replaces dark navy on non-strategic slides) */
+        .pipeline-panel {
+            background: #EEE9DE;
+            border: 1px solid rgba(23, 32, 51, 0.10);
+            border-top: 3px solid rgba(168, 132, 50, 0.5);
+            border-radius: 1rem;
+            box-shadow: 0 2px 8px -2px rgba(23, 32, 51, 0.04);
+        }
+        /* Pipeline node labels within light panels */
+        .pipeline-panel .pipeline-label-primary {
+            color: #A88432;
+            font-weight: 700;
+        }
+        .pipeline-panel .pipeline-label-blue {
+            color: #2563EB;
+            font-weight: 700;
+        }
+        .pipeline-panel .pipeline-label-green {
+            color: #15803D;
+            font-weight: 700;
+        }
+        /* Current role pulse indicator */
+        @keyframes presentPulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.4; }
+        }
+        .present-indicator {
+            animation: presentPulse 2s ease-in-out infinite;
         }
 
         *:focus-visible {
@@ -479,41 +552,41 @@
         }
     </style>
 </head>
-<body class="mode-deck bg-slate-950 text-slate-100 font-sans antialiased selection:bg-brand-500 selection:text-white min-h-screen flex flex-col justify-between overflow-x-hidden">
+<body class="mode-deck bg-[#F5F1E8] text-[#172033] font-sans antialiased selection:bg-[#A88432] selection:text-white min-h-screen flex flex-col justify-between overflow-x-hidden">
 
     <!-- TOP PROGRESS BAR -->
-    <div class="no-print fixed top-0 left-0 right-0 z-50 h-1 bg-slate-900/80 backdrop-blur-md" role="progressbar" aria-label="Deck Completion Progress" id="progressBarContainer">
-        <div id="progressBar" class="h-full bg-gradient-to-r from-[#D4AF5A] via-[#F1D58A] to-[#D4AF5A] w-0 transition-all duration-300 shadow-[0_0_10px_rgba(212,175,90,0.4)]"></div>
+    <div class="no-print fixed top-0 left-0 right-0 z-50 h-1 bg-[#D5CEC0]/80 backdrop-blur-md" role="progressbar" aria-label="Deck Completion Progress" id="progressBarContainer">
+        <div id="progressBar" class="h-full bg-gradient-to-r from-[#A88432] via-[#C5A24A] to-[#A88432] w-0 transition-all duration-300 shadow-sm"></div>
     </div>
 
     <!-- ACCESSIBILITY ANNOUNCER -->
     <div id="srAnnouncer" class="sr-only" aria-live="polite" aria-atomic="true"></div>
 
     <!-- EXECUTIVE NAVIGATION HEADER -->
-    <header class="no-print sticky top-1 z-40 glass-panel border-b border-slate-800/80 px-3 py-2 sm:px-6 shadow-2xl overflow-hidden" role="banner">
+    <header class="no-print sticky top-1 z-40 glass-panel border-b border-[#D5CEC0] px-3 py-2 sm:px-6 shadow-md overflow-hidden" role="banner">
         <div class="max-w-7xl mx-auto flex flex-wrap lg:flex-nowrap items-center justify-between gap-2">
             
             <!-- Branding / Candidate Info -->
             <div class="flex items-center space-x-3 w-full lg:w-auto justify-between lg:justify-start">
                 <div class="flex items-center space-x-3">
-                    <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-brand-500 via-emerald-400 to-gold-400 p-[2px] shadow-lg shadow-brand-500/20 shrink-0">
-                        <div class="w-full h-full bg-slate-950 rounded-[10px] flex items-center justify-center font-serif font-bold text-lg text-gold-400">
+                    <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-[#172033] to-[#A88432] p-[2px] shadow-sm shrink-0">
+                        <div class="w-full h-full bg-[#172033] rounded-[10px] flex items-center justify-center font-serif font-bold text-lg text-[#C5A24A]">
                             YC
                         </div>
                     </div>
                     <div>
-                        <h1 class="text-sm sm:text-base font-bold tracking-tight text-white flex items-center gap-2">
+                        <h1 class="text-sm sm:text-base font-bold tracking-tight text-[#172033] flex items-center gap-2">
                             <span>Yogesh Chaurasia</span>
-                            <span class="text-[10px] bg-gold-500/20 text-gold-300 px-2 py-0.5 rounded-full border border-gold-500/30 font-medium tracking-wide">10+ Yrs Real Estate Leader</span>
-                            <span id="navHint" class="hidden sm:inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-slate-900/90 border border-gold-500/30 text-[10px] text-gold-400 font-mono transition-opacity duration-500"><i class="fa-solid fa-keyboard text-[9px]" aria-hidden="true"></i> <span class="hidden md:inline">← → Navigate</span><span class="md:hidden">Swipe</span></span>
+                            <span class="text-[10px] bg-[#A88432]/10 text-[#8A6820] px-2 py-0.5 rounded-full border border-[#A88432]/30 font-medium tracking-wide">10+ Yrs Real Estate Leader</span>
+                            <span id="navHint" class="hidden sm:inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-[#EEE9DE] border border-[#D5CEC0] text-[10px] text-[#8A6820] font-mono transition-opacity duration-500"><i class="fa-solid fa-keyboard text-[9px]" aria-hidden="true"></i> <span class="hidden md:inline">← → Navigate</span><span class="md:hidden">Swipe</span></span>
                         </h1>
-                        <p class="text-[11px] text-slate-300 hidden sm:block">Senior Real Estate Marketing Manager | 360° Brand, Reach, CX & MarTech Leadership</p>
+                        <p class="text-[11px] text-[#475569] hidden sm:block">Senior Real Estate Marketing Manager | 360° Brand, Reach, CX & MarTech Leadership</p>
                     </div>
                 </div>
             </div>
 
             <!-- View Switcher & Executive Narrative Selector -->
-            <div class="flex items-center justify-center space-x-2 bg-slate-900/95 p-1 rounded-xl border border-slate-800/80 shadow-inner max-w-full overflow-x-auto">
+            <div class="flex items-center justify-center space-x-2 bg-[#EEE9DE] p-1 rounded-xl border border-[#D5CEC0] max-w-full overflow-x-auto">
                 <button id="deckModeBtn" onclick="setMode('deck')" aria-label="Switch to Slide Deck Mode" class="mode-btn px-3 py-1.5 rounded-lg text-xs font-semibold flex items-center h-8">
                     <i class="fa-solid fa-layer-group mr-1.5" aria-hidden="true"></i> Deck Mode
                 </button>
@@ -521,10 +594,10 @@
                     <i class="fa-solid fa-file-lines mr-1.5" aria-hidden="true"></i> Continuous View
                 </button>
                 
-                <div class="h-4 w-[1px] bg-slate-800 mx-1" aria-hidden="true"></div>
+                <div class="h-4 w-[1px] bg-[#D5CEC0] mx-1" aria-hidden="true"></div>
 
                 <!-- Slide Selector Dropdown (10 Slides) -->
-                <select id="slideSelector" onchange="jumpToSlide(parseInt(this.value))" aria-label="Select Executive Presentation Slide" class="bg-slate-950 text-slate-200 text-xs rounded-lg px-2.5 h-8 border border-slate-800/80 focus:outline-none focus:border-gold-400 cursor-pointer max-w-[180px] sm:max-w-xs">
+                <select id="slideSelector" onchange="jumpToSlide(parseInt(this.value))" aria-label="Select Executive Presentation Slide" class="bg-[#FBFAF6] text-[#172033] text-xs rounded-lg px-2.5 h-8 border border-[#D5CEC0] focus:outline-none focus:border-[#A88432] cursor-pointer max-w-[180px] sm:max-w-xs font-medium">
                     <option value="0">01 POSITION — Executive Thesis & Core Metrics</option>
                     <option value="1">02 PEDIGREE — 10-Year Career Scorecard</option>
                     <option value="2">03 SYSTEM — The 360° Real Estate Growth Engine</option>
@@ -540,16 +613,16 @@
 
             <!-- Header Action Buttons -->
             <div class="flex items-center justify-end space-x-1.5 shrink-0">
-                <button onclick="toggleExecSummaryModal()" aria-label="Open 20-Second Executive Summary" class="px-2.5 h-8 text-xs font-semibold text-slate-200 hover:text-white bg-slate-900/90 hover:bg-slate-800 rounded-lg border border-slate-800/80 transition-colors flex items-center gap-1 cursor-pointer">
-                    <i class="fa-solid fa-ellipsis-vertical text-gold-400" aria-hidden="true"></i> <span class="hidden xl:inline">Summary</span>
+                <button onclick="toggleExecSummaryModal()" aria-label="Open 20-Second Executive Summary" class="px-2.5 h-8 text-xs font-semibold text-[#172033] hover:bg-[#EEE9DE] bg-[#FBFAF6] rounded-lg border border-[#D5CEC0] transition-colors flex items-center gap-1 cursor-pointer">
+                    <i class="fa-solid fa-ellipsis-vertical text-[#A88432]" aria-hidden="true"></i> <span class="hidden xl:inline">Summary</span>
                 </button>
-                <button onclick="copySlideLink()" aria-label="Copy direct link to current slide" class="px-3 h-8 text-xs font-medium text-slate-200 hover:text-white bg-slate-900/90 hover:bg-slate-800 rounded-lg border border-slate-800/80 transition-colors flex items-center gap-1.5 cursor-pointer">
-                    <i class="fa-solid fa-link text-gold-400" aria-hidden="true"></i> <span class="hidden lg:inline">Copy Link</span>
+                <button onclick="copySlideLink()" aria-label="Copy direct link to current slide" class="px-3 h-8 text-xs font-medium text-[#172033] hover:bg-[#EEE9DE] bg-[#FBFAF6] rounded-lg border border-[#D5CEC0] transition-colors flex items-center gap-1.5 cursor-pointer">
+                    <i class="fa-solid fa-link text-[#A88432]" aria-hidden="true"></i> <span class="hidden lg:inline">Copy Link</span>
                 </button>
-                <button onclick="window.print()" aria-label="Export or Print Portfolio PDF" class="px-3 h-8 text-xs font-medium text-slate-200 hover:text-white bg-slate-900/90 hover:bg-slate-800 rounded-lg border border-slate-800/80 transition-colors flex items-center gap-1.5 cursor-pointer">
-                    <i class="fa-solid fa-file-pdf text-gold-400" aria-hidden="true"></i> <span class="hidden md:inline">Print / PDF</span>
+                <button onclick="window.print()" aria-label="Export or Print Portfolio PDF" class="px-3 h-8 text-xs font-medium text-[#172033] hover:bg-[#EEE9DE] bg-[#FBFAF6] rounded-lg border border-[#D5CEC0] transition-colors flex items-center gap-1.5 cursor-pointer">
+                    <i class="fa-solid fa-file-pdf text-[#A88432]" aria-hidden="true"></i> <span class="hidden md:inline">Print / PDF</span>
                 </button>
-                <button onclick="jumpToSlide(9)" aria-label="Jump to First 90-Day Plan & Resume" class="px-3.5 h-8 text-xs font-bold text-slate-950 bg-gold-400 hover:bg-gold-300 rounded-lg shadow-lg shadow-gold-500/10 transition-all flex items-center gap-1.5 cursor-pointer">
+                <button onclick="jumpToSlide(9)" aria-label="Jump to First 90-Day Plan & Resume" class="px-3.5 h-8 text-xs font-bold text-white bg-[#A88432] hover:bg-[#8F6F27] rounded-lg shadow-sm transition-all flex items-center gap-1.5 cursor-pointer">
                     <span>90-Day Plan</span> <i class="fa-solid fa-arrow-right text-[10px]" aria-hidden="true"></i>
                 </button>
             </div>
@@ -557,59 +630,59 @@
     </header>
 
     <!-- 20-SECOND EXECUTIVE BRIEF MODAL DRAWER -->
-    <div id="execSummaryModal" class="no-print fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-50 hidden items-center justify-center p-4" role="dialog" aria-modal="true" aria-labelledby="execModalTitle" onclick="if(event.target===this) toggleExecSummaryModal()">
-        <div class="glass-panel-gold max-w-xl w-full p-5 rounded-3xl border border-gold-500/40 shadow-2xl relative stagger-animate stagger-1">
-            <button onclick="toggleExecSummaryModal()" aria-label="Close Executive Brief" class="absolute top-4 right-4 text-slate-400 hover:text-white text-sm w-7 h-7 rounded-full bg-slate-900/90 flex items-center justify-center border border-slate-800 cursor-pointer">
+    <div id="execSummaryModal" class="no-print fixed inset-0 bg-[#172033]/75 backdrop-blur-sm z-50 hidden items-center justify-center p-4" role="dialog" aria-modal="true" aria-labelledby="execModalTitle" onclick="if(event.target===this) toggleExecSummaryModal()">
+        <div class="glass-panel-gold max-w-xl w-full p-5 rounded-3xl border border-[#A88432]/40 bg-[#172033] text-white shadow-2xl relative stagger-animate stagger-1">
+            <button onclick="toggleExecSummaryModal()" aria-label="Close Executive Brief" class="absolute top-4 right-4 text-slate-300 hover:text-white text-sm w-7 h-7 rounded-full bg-[#0B1120] flex items-center justify-center border border-slate-700 cursor-pointer">
                 <i class="fa-solid fa-xmark" aria-hidden="true"></i>
             </button>
 
-            <div class="inline-flex items-center space-x-2 px-3 py-0.5 rounded-full bg-gold-500/20 text-gold-300 text-[10px] font-bold uppercase tracking-wider mb-2 border border-gold-500/30">
+            <div class="inline-flex items-center space-x-2 px-3 py-0.5 rounded-full bg-[#A88432]/20 text-[#C5A24A] text-[10px] font-bold uppercase tracking-wider mb-2 border border-[#A88432]/30">
                 <i class="fa-solid fa-user-tie" aria-hidden="true"></i> EXECUTIVE BRIEF
             </div>
 
             <h2 id="execModalTitle" class="text-xl font-bold text-white font-serif mb-0.5">Yogesh Chaurasia</h2>
-            <div class="text-xs text-gold-400 font-medium mb-3">Senior Real Estate Marketing Manager</div>
+            <div class="text-xs text-[#C5A24A] font-medium mb-3">Senior Real Estate Marketing Manager</div>
 
             <div class="space-y-2 text-xs text-slate-200 mb-4">
-                <div class="bg-slate-950/90 p-3 rounded-2xl border border-slate-800/80">
-                    <strong class="text-gold-400 uppercase tracking-wider text-[10px] block mb-1">10+ YEARS EXPERIENCE</strong>
-                    <p class="text-slate-300 text-xs leading-relaxed">
+                <div class="bg-[#0B1120] p-3 rounded-2xl border border-slate-700/80">
+                    <strong class="text-[#C5A24A] uppercase tracking-wider text-[10px] block mb-1">10+ YEARS EXPERIENCE</strong>
+                    <p class="text-[#CBD5E1] text-xs leading-relaxed">
                         Real estate marketing experience across developer marketing, brand positioning, ATL outdoor media, pre-sales, sales CX, CRM & MarTech.
                     </p>
                 </div>
 
-                <div class="bg-slate-950/90 p-3 rounded-2xl border border-slate-800/80">
-                    <strong class="text-gold-400 uppercase tracking-wider text-[10px] block mb-1">CORE STRENGTH</strong>
-                    <p class="text-slate-300 text-xs font-semibold">
+                <div class="bg-[#0B1120] p-3 rounded-2xl border border-slate-700/80">
+                    <strong class="text-[#C5A24A] uppercase tracking-wider text-[10px] block mb-1">CORE STRENGTH</strong>
+                    <p class="text-white text-xs font-semibold">
                         Connecting marketing strategy with sales gallery execution.
                     </p>
                 </div>
 
-                <div class="bg-slate-950/90 p-2.5 rounded-2xl border border-slate-800/80 text-center">
+                <div class="bg-[#0B1120] p-2.5 rounded-2xl border border-slate-700/80 text-center">
                     <strong class="text-slate-400 uppercase tracking-wider text-[10px] block mb-1">WHAT I BRING</strong>
-                    <div class="text-[11px] font-mono text-gold-300 font-bold">
+                    <div class="text-[11px] font-mono text-[#C5A24A] font-bold">
                         Brand → Reach → CX → Pre-Sales → CRM → MarTech
                     </div>
                 </div>
 
                 <!-- EXPECTATION CARD -->
-                <div class="p-3 rounded-2xl bg-[#111B2E] border border-gold-500/35 flex items-center justify-between gap-2">
+                <div class="p-3.5 rounded-2xl bg-[#0B1120] border border-[#A88432]/60 flex items-center justify-between gap-3 text-white">
                     <div>
-                        <div class="text-[10px] font-bold text-slate-400 uppercase tracking-wider">EXPECTED CTC</div>
-                        <div class="text-base font-extrabold text-[#F1D58A] font-serif">₹18–20 LPA</div>
+                        <div class="text-xs font-bold text-[#C5A24A] uppercase tracking-wider">EXPECTED CTC</div>
+                        <div class="text-lg font-extrabold text-[#C5A24A] font-serif">₹18–20 LPA</div>
                     </div>
-                    <div class="text-[11px] text-slate-300 text-right font-medium">Flexible based on scope</div>
+                    <div class="text-xs text-slate-100 text-right font-medium">Flexible based on scope</div>
                 </div>
             </div>
 
             <div class="flex flex-wrap gap-2 justify-end">
-                <button onclick="toggleExecSummaryModal(); jumpToSlide(1);" class="px-3.5 py-1.5 bg-slate-900 hover:bg-slate-800 text-slate-200 text-xs font-semibold rounded-xl border border-slate-800 transition-colors">
+                <button onclick="toggleExecSummaryModal(); jumpToSlide(1);" class="px-3.5 py-1.5 bg-[#0B1120] hover:bg-[#1E293B] text-slate-200 text-xs font-semibold rounded-xl border border-slate-700 transition-colors cursor-pointer">
                     Career Scorecard
                 </button>
-                <button onclick="toggleExecSummaryModal(); jumpToSlide(8);" class="px-3.5 py-1.5 bg-slate-900 hover:bg-slate-800 text-slate-200 text-xs font-semibold rounded-xl border border-slate-800 transition-colors">
+                <button onclick="toggleExecSummaryModal(); jumpToSlide(8);" class="px-3.5 py-1.5 bg-[#0B1120] hover:bg-[#1E293B] text-slate-200 text-xs font-semibold rounded-xl border border-slate-700 transition-colors cursor-pointer">
                     MarTech & Code
                 </button>
-                <button onclick="toggleExecSummaryModal(); jumpToSlide(9);" class="px-4 py-1.5 bg-gold-400 hover:bg-gold-300 text-slate-950 text-xs font-bold rounded-xl shadow-md transition-all">
+                <button onclick="toggleExecSummaryModal(); jumpToSlide(9);" class="px-4 py-1.5 bg-[#A88432] hover:bg-[#8F6F27] text-white text-xs font-bold rounded-xl shadow-md transition-all cursor-pointer">
                     90-Day Plan
                 </button>
             </div>
@@ -622,53 +695,63 @@
         <!-- ================= SLIDE 1: EXECUTIVE PROFILE & THESIS ================= -->
         <section id="slide-0" class="slide-card relative py-6 active-slide" aria-label="Slide 1: Executive Profile & Strategic Thesis">
             <div class="slide-content w-full flex flex-col justify-center items-center text-center">
-                <span class="evidence-tag mb-3"><i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i> ↗ Candidate Portfolio</span>
 
-                <div class="inline-flex items-center space-x-2 px-3.5 py-1 rounded-full bg-slate-900/90 border border-gold-500/40 text-gold-400 text-xs font-semibold mb-3 shadow-lg shadow-gold-500/5">
-                    <i class="fa-solid fa-user-tie text-[11px]" aria-hidden="true"></i>
-                    <span class="tracking-wider uppercase text-[10px] sm:text-xs">10+ YEARS REAL ESTATE MARKETING EXPERIENCE</span>
+                <!-- Eyebrow — "EXECUTIVE PORTFOLIO · 2026" — small caps, refined -->
+                <div class="inline-flex items-center gap-2 mb-4">
+                    <span class="w-5 h-px bg-[#A88432]/50"></span>
+                    <span class="text-[10px] font-bold text-[#8A6820] uppercase tracking-[0.2em]">Executive Portfolio · 2026</span>
+                    <span class="w-5 h-px bg-[#A88432]/50"></span>
                 </div>
 
-                <h1 class="text-4xl sm:text-6xl md:text-7xl font-extrabold text-white tracking-tight leading-tight max-w-4xl font-serif">
+                <h1 class="text-4xl sm:text-6xl md:text-7xl font-extrabold text-[#172033] tracking-tight leading-none max-w-4xl font-serif">
                     Yogesh Chaurasia
                 </h1>
-                <p class="text-lg sm:text-2xl font-bold brand-gradient-text mt-2 tracking-wide">
+                <p class="text-base sm:text-xl font-semibold text-[#A88432] mt-3 tracking-widest uppercase font-sans">
                     Senior Real Estate Marketing Manager
                 </p>
 
-                <p class="mt-4 text-sm sm:text-base text-slate-200 max-w-3xl font-normal leading-relaxed">
-                    I connect brand positioning, media reach, sales experience, CRM and MarTech into one measurable growth ecosystem.
+                <p class="mt-5 text-sm sm:text-base text-[#475569] max-w-2xl font-normal leading-relaxed border-y border-[#D5CEC0]/60 py-4">
+                    I connect brand positioning, media reach, sales gallery experience, CRM and MarTech into one measurable growth ecosystem.
                 </p>
 
-                <!-- 4 High-Impact Executive KPI Counter Pills (Scannability & Factual Accuracy) -->
-                <div class="grid grid-cols-2 md:grid-cols-4 gap-3 mt-8 w-full max-w-4xl">
-                    <div class="surface-featured p-4 text-center">
-                        <div class="text-2xl sm:text-3xl font-extrabold text-gold-400 font-mono">10+ Years</div>
-                        <div class="text-xs text-slate-300 font-medium mt-1">Real Estate Experience</div>
+                <!-- Editorial Typographic Stat Row — 4 moments, no card backgrounds -->
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-0 mt-8 w-full max-w-3xl divide-x divide-[#D5CEC0]/60">
+                    <div class="text-center px-4 py-3">
+                        <div class="metric-display text-[#172033]">10+</div>
+                        <div class="text-[10px] text-[#64748B] font-semibold mt-1.5 uppercase tracking-widest">Years</div>
+                        <div class="text-[10px] text-[#8A6820] font-medium">Real Estate Mktg</div>
                     </div>
-                    <div class="surface-evidence p-4 text-center">
-                        <div class="text-2xl sm:text-3xl font-extrabold text-white font-mono">5+</div>
-                        <div class="text-xs text-slate-300 font-medium mt-1">Developer Ecosystems</div>
+                    <div class="text-center px-4 py-3">
+                        <div class="metric-display text-[#172033]">5+</div>
+                        <div class="text-[10px] text-[#64748B] font-semibold mt-1.5 uppercase tracking-widest">Employers</div>
+                        <div class="text-[10px] text-[#2563EB] font-medium">Developer Groups</div>
                     </div>
-                    <div class="surface-evidence p-4 text-center">
-                        <div class="text-2xl sm:text-3xl font-extrabold text-emerald-400 font-mono">787K+</div>
-                        <div class="text-xs text-slate-300 font-medium mt-1">Organic Impressions</div>
+                    <div class="text-center px-4 py-3">
+                        <div class="metric-display text-[#15803D]">787K</div>
+                        <div class="text-[10px] text-[#64748B] font-semibold mt-1.5 uppercase tracking-widest">Impressions</div>
+                        <div class="text-[10px] text-[#15803D] font-medium">Organic Search</div>
                     </div>
-                    <div class="surface-featured p-4 text-center">
-                        <div class="text-2xl sm:text-3xl font-extrabold text-gold-400 font-mono">360°</div>
-                        <div class="text-xs text-slate-300 font-medium mt-1">Marketing Ownership</div>
+                    <div class="text-center px-4 py-3">
+                        <div class="metric-display text-[#A88432]">360°</div>
+                        <div class="text-[10px] text-[#64748B] font-semibold mt-1.5 uppercase tracking-widest">Ownership</div>
+                        <div class="text-[10px] text-[#8A6820] font-medium">Full Ecosystem</div>
                     </div>
                 </div>
 
                 <div class="mt-8 flex flex-col sm:flex-row gap-3 items-center">
-                    <button onclick="nextSlide()" aria-label="Explore Leadership Journey" class="px-8 py-3 bg-gold-400 hover:bg-gold-300 text-slate-950 text-xs font-bold rounded-xl shadow-xl shadow-gold-500/20 transition-all flex items-center gap-2 group cursor-pointer focus:ring-2 focus:ring-gold-400">
+                    <button onclick="nextSlide()" aria-label="Explore Leadership Journey" class="px-8 py-3 bg-[#A88432] hover:bg-[#8F6F27] text-white text-xs font-bold rounded-xl shadow-md transition-all flex items-center gap-2 group cursor-pointer focus:ring-2 focus:ring-[#A88432]">
                         <span>Explore Leadership Journey</span>
-                        <i class="fa-solid fa-arrow-right group-hover:translate-x-1 transition-transform text-slate-950" aria-hidden="true"></i>
+                        <i class="fa-solid fa-arrow-right group-hover:translate-x-1 transition-transform text-white" aria-hidden="true"></i>
+                    </button>
+                    <button onclick="jumpToSlide(9)" aria-label="Jump to 90-Day Plan" class="px-6 py-3 bg-[#FBFAF6] hover:bg-[#EEE9DE] text-[#172033] text-xs font-semibold rounded-xl border border-[#D5CEC0] transition-all flex items-center gap-2 cursor-pointer">
+                        View 90-Day Plan <i class="fa-solid fa-arrow-right text-[10px] text-[#A88432]" aria-hidden="true"></i>
                     </button>
                 </div>
 
-                <div class="mt-4 text-[11px] text-slate-300 font-medium">
-                    Current Role: Assistant Manager - Marketing | Sonawane Group (April 2023 – July 2026)
+                <!-- Current role — minimal, not a footnote -->
+                <div class="mt-5 flex items-center gap-2 text-[11px] text-[#64748B]">
+                    <span class="w-1.5 h-1.5 rounded-full bg-[#15803D] present-indicator"></span>
+                    <span class="font-medium">Currently: Asst. Manager – Marketing · Sonawane Group · Apr 2023 – Jul 2026</span>
                 </div>
             </div>
         </section>
@@ -678,65 +761,70 @@
             <div class="slide-content w-full">
                 <div class="flex items-center justify-between mb-2">
                     <span class="slide-eyebrow text-xs font-bold uppercase tracking-wider flex items-center gap-2">
-                        <span class="w-2 h-2 rounded-full bg-gold-400 animate-pulse"></span> Slide 02 / 10+ Year Track Record & Developer Pedigree
+                        <span class="w-2 h-2 rounded-full bg-[#A88432] animate-pulse"></span> Slide 02 / 10+ Year Track Record & Developer Pedigree
                     </span>
-                    <span class="slide-meta text-[11px] font-mono bg-slate-900/90 px-2.5 py-0.5 rounded-full border border-gold-500/40 font-semibold shadow-inner">10+ Years Industry Experience</span>
+                    <span class="slide-meta text-[11px] font-mono bg-[#FBFAF6] px-2.5 py-0.5 rounded-full border border-[#D5CEC0] text-[#8A6820] font-semibold shadow-sm">10+ Years Industry Experience</span>
                 </div>
 
                 <div class="mb-3">
-                    <h2 class="slide-title text-xl sm:text-2xl font-bold text-white font-serif">A 10-Year Career Built Across Major Real Estate Developers</h2>
-                    <p class="slide-subtitle text-xs text-slate-200 font-light mt-0.5">Proven end-to-end tenure spanning sales, pre-sales management, ATL/BTL marketing execution, agency procurement, and MarTech architecture.</p>
+                    <h2 class="slide-title text-xl sm:text-2xl font-bold text-[#172033] font-serif">A 10-Year Career Built Across Major Real Estate Developers</h2>
+                    <p class="slide-subtitle text-xs text-[#475569] font-normal mt-0.5">Proven end-to-end tenure spanning sales, pre-sales management, ATL/BTL marketing execution, agency procurement, and MarTech architecture.</p>
                 </div>
 
-                <!-- HORIZONTAL CAREER TIMELINE VISUAL -->
-                <div class="surface-featured p-4 rounded-2xl mb-3 border border-gold-500/30">
-                    <div class="text-[10px] font-bold text-gold-400 uppercase tracking-widest text-center mb-3">10+ YEARS / 5 DEVELOPER ECOSYSTEM TIMELINE (2011 – 2026)</div>
+                <!-- HORIZONTAL CAREER TIMELINE VISUAL (Featured Dark Navy Strategy Panel for Contrast Rhythm) -->
+                <div class="surface-featured p-4 rounded-2xl mb-3 border border-[#A88432]/40 bg-[#172033]">
+                    <div class="text-[10px] font-bold text-[#C5A24A] uppercase tracking-widest text-center mb-3">10+ YEARS / 5 DEVELOPER ECOSYSTEM TIMELINE (2011 – 2026)</div>
                     
                     <div class="grid grid-cols-1 sm:grid-cols-5 gap-2 text-center relative">
-                        <div class="surface-evidence p-3 rounded-xl border-t-2 border-t-gold-400">
-                            <div class="text-[10px] font-bold text-gold-400 font-mono">2011 – 2013</div>
-                            <div class="text-xs font-bold text-white mt-0.5">Puranik Builders</div>
-                            <div class="text-[10px] text-slate-300 mt-0.5">Sr. Exec - Pre-Sales</div>
+                        <div class="surface-evidence p-3 rounded-xl border-t-2 border-t-[#A88432] bg-[#FBFAF6]">
+                            <div class="text-[10px] font-bold text-[#A88432] font-mono">2011 – 2013</div>
+                            <div class="text-xs font-bold text-[#172033] mt-0.5">Puranik Builders</div>
+                            <div class="text-[10px] text-[#475569] mt-0.5">Sr. Exec - Pre-Sales</div>
                         </div>
-                        <div class="surface-evidence p-3 rounded-xl border-t-2 border-t-blue-400">
-                            <div class="text-[10px] font-bold text-blue-400 font-mono">2014 – 2022 (8 Yrs)</div>
-                            <div class="text-xs font-bold text-white mt-0.5">Damji Shamji Shah</div>
-                            <div class="text-[10px] text-slate-300 mt-0.5">Exec - Sales & Marketing</div>
+                        <div class="surface-evidence p-3 rounded-xl border-t-2 border-t-[#2563EB] bg-[#FBFAF6]">
+                            <div class="text-[10px] font-bold text-[#2563EB] font-mono">2014 – 2022 (8 Yrs)</div>
+                            <div class="text-xs font-bold text-[#172033] mt-0.5">Damji Shamji Shah</div>
+                            <div class="text-[10px] text-[#475569] mt-0.5">Exec - Sales & Marketing</div>
                         </div>
-                        <div class="surface-evidence p-3 rounded-xl border-t-2 border-t-blue-400">
-                            <div class="text-[10px] font-bold text-blue-400 font-mono">2022</div>
-                            <div class="text-xs font-bold text-white mt-0.5">Justo Realfintech</div>
-                            <div class="text-[10px] text-slate-300 mt-0.5">Asst. Manager - Sales</div>
+                        <div class="surface-evidence p-3 rounded-xl border-t-2 border-t-[#2563EB] bg-[#FBFAF6]">
+                            <div class="text-[10px] font-bold text-[#2563EB] font-mono">2022</div>
+                            <div class="text-xs font-bold text-[#172033] mt-0.5">Justo Realfintech</div>
+                            <div class="text-[10px] text-[#475569] mt-0.5">Asst. Manager - Sales</div>
                         </div>
-                        <div class="surface-evidence p-3 rounded-xl border-t-2 border-t-gold-400">
-                            <div class="text-[10px] font-bold text-gold-400 font-mono">2022 – 2023</div>
-                            <div class="text-xs font-bold text-white mt-0.5">Per Square Feet</div>
-                            <div class="text-[10px] text-slate-300 mt-0.5">AGM - Presales & Marketing</div>
+                        <div class="surface-evidence p-3 rounded-xl border-t-2 border-t-[#A88432] bg-[#FBFAF6]">
+                            <div class="text-[10px] font-bold text-[#A88432] font-mono">2022 – 2023</div>
+                            <div class="text-xs font-bold text-[#172033] mt-0.5">Per Square Feet</div>
+                            <div class="text-[10px] text-[#475569] mt-0.5">AGM - Presales & Marketing</div>
                         </div>
-                        <div class="surface-featured p-3 rounded-xl border-t-2 border-t-gold-400 bg-slate-950">
-                            <div class="text-[10px] font-bold text-gold-400 font-mono">2023 – 2026</div>
+                        <!-- CURRENT ROLE — terminal card with PRESENT indicator -->
+                        <div class="p-3 rounded-xl border-t-2 border-t-[#C5A24A] bg-[#0B1120] text-white relative ring-1 ring-[#C5A24A]/30 shadow-lg shadow-[#A88432]/10">
+                            <div class="flex items-center justify-center gap-1.5 mb-1">
+                                <span class="w-1.5 h-1.5 rounded-full bg-[#15803D] present-indicator"></span>
+                                <span class="text-[9px] font-bold text-[#15803D] uppercase tracking-widest">PRESENT</span>
+                            </div>
+                            <div class="text-[10px] font-bold text-[#C5A24A] font-mono">2023 – 2026</div>
                             <div class="text-xs font-bold text-white mt-0.5">Sonawane Group</div>
-                            <div class="text-[10px] text-gold-300 mt-0.5">Assistant Manager - Marketing</div>
+                            <div class="text-[10px] text-[#CBD5E1] mt-0.5">Asst. Manager - Marketing</div>
                         </div>
                     </div>
 
                     <!-- SINGLE CLEAN CAREER PROGRESSION BAR -->
-                    <div class="mt-3 pt-2.5 border-t border-slate-800 text-center">
-                        <div class="text-[10px] font-mono font-bold text-slate-300 tracking-wider">
-                            PRE-SALES <span class="text-gold-400">→</span> SALES & MARKETING <span class="text-gold-400">→</span> CHANNEL PARTNER STRATEGY <span class="text-gold-400">→</span> 360° MARKETING <span class="text-gold-400">→</span> MARTECH & FULL OWNERSHIP
+                    <div class="mt-3 pt-2.5 border-t border-slate-700/80 text-center">
+                        <div class="text-[10px] font-mono font-bold text-[#CBD5E1] tracking-wider">
+                            PRE-SALES <span class="text-[#C5A24A]">→</span> SALES & MARKETING <span class="text-[#C5A24A]">→</span> CHANNEL PARTNER STRATEGY <span class="text-[#C5A24A]">→</span> 360° MARKETING <span class="text-[#C5A24A]">→</span> MARTECH & FULL OWNERSHIP
                         </div>
                     </div>
                 </div>
 
                 <!-- Bottom Line Career Summary Box -->
-                <div class="surface-evidence p-3 rounded-2xl border-l-4 border-l-gold-400 flex flex-col sm:flex-row items-center justify-between gap-3 shadow-xl">
+                <div class="surface-evidence p-3 rounded-2xl border-l-4 border-l-[#A88432] flex flex-col sm:flex-row items-center justify-between gap-3 shadow-md bg-[#FBFAF6] border border-[#D5CEC0]">
                     <div>
-                        <div class="text-xs font-bold text-gold-400 uppercase tracking-wider mb-0.5">Core Career Value Proposition</div>
-                        <p class="text-xs text-slate-200 leading-relaxed">
+                        <div class="text-xs font-bold text-[#A88432] uppercase tracking-wider mb-0.5">Core Career Value Proposition</div>
+                        <p class="text-xs text-[#475569] leading-relaxed">
                             Complete cross-functional mastery: 10+ years spanning sales closing tables, broker network management, ATL outdoor media procurement, sales gallery buildouts, pre-sales team leadership, and server-hosted MarTech software.
                         </p>
                     </div>
-                    <button onclick="jumpToSlide(9)" class="shrink-0 px-4 py-2 bg-gradient-to-r from-gold-400 to-gold-500 hover:from-gold-300 hover:to-gold-400 text-slate-950 font-bold text-xs rounded-xl shadow-lg shadow-gold-500/10 transition-all flex items-center gap-1.5 cursor-pointer">
+                    <button onclick="jumpToSlide(9)" class="shrink-0 px-4 py-2 bg-[#A88432] hover:bg-[#8F6F27] text-white font-bold text-xs rounded-xl shadow-md transition-all flex items-center gap-1.5 cursor-pointer">
                         <span>View 90-Day Plan</span>
                         <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
                     </button>
@@ -749,83 +837,83 @@
             <div class="slide-content w-full">
                 <div class="flex items-center justify-between mb-2">
                     <span class="slide-eyebrow text-xs font-bold uppercase tracking-wider flex items-center gap-2">
-                        <span class="w-2 h-2 rounded-full bg-gold-400"></span> Slide 03 / Full-Spectrum Growth System Framework
+                        <span class="w-2 h-2 rounded-full bg-[#A88432]"></span> Slide 03 / Full-Spectrum Growth System Framework
                     </span>
-                    <span class="slide-meta text-xs text-slate-200">Integrated Growth Ecosystem</span>
+                    <span class="slide-meta text-xs text-[#475569] font-medium">Integrated Growth Ecosystem</span>
                 </div>
 
                 <div class="mb-3 text-center sm:text-left">
-                    <h2 class="slide-title text-xl sm:text-2xl font-bold text-white font-serif">The 360° Real Estate Growth Engine</h2>
-                    <p class="slide-subtitle text-xs text-slate-200 font-light mt-0.5">Connecting offline traditional media, sales gallery CX, channel partner distribution, pre-sales CRM, and custom MarTech into one decision-making framework.</p>
+                    <h2 class="slide-title text-xl sm:text-2xl font-bold text-[#172033] font-serif">The 360° Real Estate Growth Engine</h2>
+                    <p class="slide-subtitle text-xs text-[#475569] font-normal mt-0.5">Connecting offline traditional media, sales gallery CX, channel partner distribution, pre-sales CRM, and custom MarTech into one decision-making framework.</p>
                 </div>
 
-                <!-- CENTRAL VISUAL SYSTEM FLOWCHART -->
-                <div class="surface-card-elevated p-4 sm:p-5 rounded-2xl mb-4 border border-gold-500/30">
-                    <div class="text-[10px] font-bold text-gold-400 uppercase tracking-widest text-center mb-3">BRAND POSITIONING → ATL & DIGITAL REACH → SALES GALLERY CX → PRE-SALES & CRM → MARTECH → BUSINESS DECISIONS</div>
+                <!-- CENTRAL VISUAL SYSTEM FLOWCHART (Featured Dark Navy Strategy Panel) -->
+                <div class="surface-featured p-4 sm:p-5 rounded-2xl mb-4 border border-[#A88432]/40 bg-[#172033]">
+                    <div class="text-[10px] font-bold text-[#C5A24A] uppercase tracking-widest text-center mb-3">BRAND POSITIONING → ATL & DIGITAL REACH → SALES GALLERY CX → PRE-SALES & CRM → MARTECH → BUSINESS DECISIONS</div>
                     
                     <div class="flex flex-col lg:flex-row items-center justify-between gap-2 text-center">
-                        <div onclick="selectSystemNode(0)" class="surface-card hover:surface-featured p-3 rounded-xl flex-1 w-full border-t-2 border-t-gold-400 cursor-pointer transition-all">
-                            <div class="text-xs font-bold text-white mb-0.5">1. BRAND POSITIONING</div>
-                            <div class="text-[10px] text-gold-300">Identity & Campaign Thesis</div>
+                        <div onclick="selectSystemNode(0)" class="surface-evidence p-3 rounded-xl flex-1 w-full border-t-2 border-t-[#A88432] bg-[#FBFAF6] cursor-pointer transition-all">
+                            <div class="text-xs font-bold text-[#172033] mb-0.5">1. BRAND POSITIONING</div>
+                            <div class="text-[10px] text-[#8A6820] font-medium">Identity & Campaign Thesis</div>
                         </div>
 
-                        <div class="hidden lg:block text-slate-500 text-sm font-bold"><i class="fa-solid fa-arrow-right"></i></div>
-                        <div class="lg:hidden text-slate-500 text-xs my-1"><i class="fa-solid fa-arrow-down"></i></div>
+                        <div class="hidden lg:block text-[#C5A24A] text-sm font-bold"><i class="fa-solid fa-arrow-right"></i></div>
+                        <div class="lg:hidden text-[#C5A24A] text-xs my-1"><i class="fa-solid fa-arrow-down"></i></div>
 
-                        <div onclick="selectSystemNode(1)" class="surface-card hover:surface-featured p-3 rounded-xl flex-1 w-full border-t-2 border-t-blue-400 cursor-pointer transition-all">
-                            <div class="text-xs font-bold text-white mb-0.5">2. ATL & DIGITAL REACH</div>
-                            <div class="text-[10px] text-blue-300">Billboards, Ads & Search</div>
+                        <div onclick="selectSystemNode(1)" class="surface-evidence p-3 rounded-xl flex-1 w-full border-t-2 border-t-[#2563EB] bg-[#FBFAF6] cursor-pointer transition-all">
+                            <div class="text-xs font-bold text-[#172033] mb-0.5">2. ATL & DIGITAL REACH</div>
+                            <div class="text-[10px] text-[#2563EB] font-medium">Billboards, Ads & Search</div>
                         </div>
 
-                        <div class="hidden lg:block text-slate-500 text-sm font-bold"><i class="fa-solid fa-arrow-right"></i></div>
-                        <div class="lg:hidden text-slate-500 text-xs my-1"><i class="fa-solid fa-arrow-down"></i></div>
+                        <div class="hidden lg:block text-[#C5A24A] text-sm font-bold"><i class="fa-solid fa-arrow-right"></i></div>
+                        <div class="lg:hidden text-[#C5A24A] text-xs my-1"><i class="fa-solid fa-arrow-down"></i></div>
 
-                        <div onclick="selectSystemNode(2)" class="surface-card hover:surface-featured p-3 rounded-xl flex-1 w-full border-t-2 border-t-gold-400 cursor-pointer transition-all">
-                            <div class="text-xs font-bold text-white mb-0.5">3. SALES GALLERY CX</div>
-                            <div class="text-[10px] text-gold-300">Entrance & Site Experience</div>
+                        <div onclick="selectSystemNode(2)" class="surface-evidence p-3 rounded-xl flex-1 w-full border-t-2 border-t-[#A88432] bg-[#FBFAF6] cursor-pointer transition-all">
+                            <div class="text-xs font-bold text-[#172033] mb-0.5">3. SALES GALLERY CX</div>
+                            <div class="text-[10px] text-[#8A6820] font-medium">Entrance & Site Experience</div>
                         </div>
 
-                        <div class="hidden lg:block text-slate-500 text-sm font-bold"><i class="fa-solid fa-arrow-right"></i></div>
-                        <div class="lg:hidden text-slate-500 text-xs my-1"><i class="fa-solid fa-arrow-down"></i></div>
+                        <div class="hidden lg:block text-[#C5A24A] text-sm font-bold"><i class="fa-solid fa-arrow-right"></i></div>
+                        <div class="lg:hidden text-[#C5A24A] text-xs my-1"><i class="fa-solid fa-arrow-down"></i></div>
 
-                        <div onclick="selectSystemNode(3)" class="surface-card hover:surface-featured p-3 rounded-xl flex-1 w-full border-t-2 border-t-blue-400 cursor-pointer transition-all">
-                            <div class="text-xs font-bold text-white mb-0.5">4. PRE-SALES & CRM</div>
-                            <div class="text-[10px] text-blue-300">Lead Qualification & Tagging</div>
+                        <div onclick="selectSystemNode(3)" class="surface-evidence p-3 rounded-xl flex-1 w-full border-t-2 border-t-[#2563EB] bg-[#FBFAF6] cursor-pointer transition-all">
+                            <div class="text-xs font-bold text-[#172033] mb-0.5">4. PRE-SALES & CRM</div>
+                            <div class="text-[10px] text-[#2563EB] font-medium">Lead Qualification & Tagging</div>
                         </div>
 
-                        <div class="hidden lg:block text-slate-500 text-sm font-bold"><i class="fa-solid fa-arrow-right"></i></div>
-                        <div class="lg:hidden text-slate-500 text-xs my-1"><i class="fa-solid fa-arrow-down"></i></div>
+                        <div class="hidden lg:block text-[#C5A24A] text-sm font-bold"><i class="fa-solid fa-arrow-right"></i></div>
+                        <div class="lg:hidden text-[#C5A24A] text-xs my-1"><i class="fa-solid fa-arrow-down"></i></div>
 
-                        <div onclick="selectSystemNode(4)" class="surface-card hover:surface-featured p-3 rounded-xl flex-1 w-full border-t-2 border-t-emerald-400 cursor-pointer transition-all">
-                            <div class="text-xs font-bold text-white mb-0.5">5. MARTECH ENGINE</div>
-                            <div class="text-[10px] text-emerald-300">WAHub & Data Infrastructure</div>
+                        <div onclick="selectSystemNode(4)" class="surface-evidence p-3 rounded-xl flex-1 w-full border-t-2 border-t-[#15803D] bg-[#FBFAF6] cursor-pointer transition-all">
+                            <div class="text-xs font-bold text-[#172033] mb-0.5">5. MARTECH ENGINE</div>
+                            <div class="text-[10px] text-[#15803D] font-medium">WAHub & Data Infrastructure</div>
                         </div>
 
-                        <div class="hidden lg:block text-slate-500 text-sm font-bold"><i class="fa-solid fa-arrow-right"></i></div>
-                        <div class="lg:hidden text-slate-500 text-xs my-1"><i class="fa-solid fa-arrow-down"></i></div>
+                        <div class="hidden lg:block text-[#C5A24A] text-sm font-bold"><i class="fa-solid fa-arrow-right"></i></div>
+                        <div class="lg:hidden text-[#C5A24A] text-xs my-1"><i class="fa-solid fa-arrow-down"></i></div>
 
-                        <div onclick="selectSystemNode(5)" class="surface-featured p-3 rounded-xl flex-1 w-full border-t-2 border-t-gold-400 bg-slate-950 cursor-pointer transition-all">
-                            <div class="text-xs font-bold text-gold-400 mb-0.5">6. BUSINESS DECISIONS</div>
-                            <div class="text-[10px] text-slate-300">Actionable Growth Insights</div>
+                        <div onclick="selectSystemNode(5)" class="p-3 rounded-xl flex-1 w-full border-t-2 border-t-[#A88432] bg-[#0B1120] text-white cursor-pointer transition-all">
+                            <div class="text-xs font-bold text-[#C5A24A] mb-0.5">6. BUSINESS DECISIONS</div>
+                            <div class="text-[10px] text-[#CBD5E1]">Actionable Growth Insights</div>
                         </div>
                     </div>
                 </div>
 
                 <!-- INTERACTIVE OPERATING MODEL INSPECTOR -->
-                <div id="systemNodeInspector" class="surface-featured p-4 rounded-2xl border border-gold-500/40 shadow-2xl flex flex-col md:flex-row items-center justify-between gap-4 transition-all">
+                <div id="systemNodeInspector" class="surface-featured p-4 rounded-2xl border border-[#A88432]/40 bg-[#172033] shadow-lg flex flex-col md:flex-row items-center justify-between gap-4 transition-all">
                     <div class="space-y-1 text-left flex-1">
                         <div class="flex items-center gap-2">
                             <span id="nodeBadge" class="evidence-tag">↗ Strategic Operating Model</span>
-                            <span id="nodeSubtitle" class="text-xs font-mono text-gold-400 font-semibold">Project Identity & Market Narrative</span>
+                            <span id="nodeSubtitle" class="text-xs font-mono text-[#C5A24A] font-semibold">Project Identity & Market Narrative</span>
                         </div>
                         <h3 id="nodeTitle" class="text-base font-bold text-white font-serif">1. BRAND POSITIONING</h3>
-                        <p id="nodeDesc" class="text-xs text-slate-300 leading-relaxed">
+                        <p id="nodeDesc" class="text-xs text-[#CBD5E1] leading-relaxed">
                             Defining unique project positioning, launch creative themes, micro-market infrastructure storytelling (Metro Line 5 & BKC 2.0), and standalone campaign portals.
                         </p>
                     </div>
                     <div class="shrink-0 text-right">
                         <span class="text-[10px] text-slate-400 font-mono block">Interactive Pillar Click</span>
-                        <span id="nodeIndexText" class="text-xl font-bold font-mono text-gold-400">Node 01 / 06</span>
+                        <span id="nodeIndexText" class="text-xl font-bold font-mono text-[#C5A24A]">Node 01 / 06</span>
                     </div>
                 </div>
             </div>
@@ -836,72 +924,73 @@
             <div class="slide-content w-full">
                 <div class="flex items-center justify-between mb-2">
                     <span class="slide-eyebrow text-xs font-bold uppercase tracking-wider flex items-center gap-2">
-                        <span class="w-2 h-2 rounded-full bg-gold-400"></span> Slide 04 / Brand Positioning & Project Launch Execution
+                        <span class="w-2 h-2 rounded-full bg-[#A88432]"></span> Slide 04 / Brand Positioning & Project Launch Execution
                     </span>
-                    <span class="slide-meta text-xs text-slate-200">Sonawane Group Campaign Portfolio</span>
+                    <span class="slide-meta text-xs text-[#475569] font-medium">Sonawane Group Campaign Portfolio</span>
                 </div>
 
                 <div class="mb-3">
-                    <h2 class="slide-title text-xl sm:text-2xl font-bold text-white font-serif">Brand Positioning & Standalone Location Portals</h2>
-                    <p class="slide-subtitle text-xs text-slate-200 font-light mt-0.5">Defining project identities, launch themes, micro-market strategy, and standalone regional campaign portals.</p>
+                    <h2 class="slide-title text-xl sm:text-2xl font-bold text-[#172033] font-serif">Brand Positioning & Standalone Location Portals</h2>
+                    <p class="slide-subtitle text-xs text-[#475569] font-normal mt-0.5">Defining project identities, launch themes, micro-market strategy, and standalone regional campaign portals.</p>
                 </div>
 
                 <!-- HERO CASE STUDY CONTAINER WITH INTERACTIVE TABBED SELECTION -->
-                <div class="surface-featured p-5 rounded-2xl mb-4 border border-gold-500/40 shadow-2xl">
-                    <div class="flex flex-col sm:flex-row sm:items-center justify-between border-b border-slate-800 pb-3 mb-4 gap-2">
+                <div class="pipeline-panel p-5 rounded-2xl mb-4 shadow-sm">
+                    <div class="flex flex-col sm:flex-row sm:items-center justify-between border-b border-[#D5CEC0]/80 pb-3 mb-4 gap-2">
                         <div>
                             <div class="flex items-center gap-2">
                                 <span id="caseHeaderBadge" class="evidence-tag">↗ Live Portal</span>
-                                <span id="caseCategory" class="text-xs font-mono text-gold-400 font-semibold">Location Positioning Hub</span>
+                                <span id="caseCategory" class="text-xs font-mono text-[#A88432] font-semibold">Location Positioning Hub</span>
                             </div>
-                            <h3 id="caseHeroTitle" class="text-lg font-bold text-white font-serif mt-1">Case Study 01: Naya KDMC Location Hub</h3>
+                            <h3 id="caseHeroTitle" class="text-lg font-bold text-[#172033] font-serif mt-1">Case Study 01: Naya KDMC Location Hub</h3>
                         </div>
-                        <a id="caseHeroLink" href="https://nayakdmc.in/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 px-3 py-1.5 bg-gold-500/20 hover:bg-gold-500/30 text-gold-300 text-xs font-mono font-bold rounded-xl border border-gold-500/30 transition-colors">
+                        <a id="caseHeroLink" href="https://nayakdmc.in/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 px-3 py-1.5 bg-[#A88432]/10 hover:bg-[#A88432]/20 text-[#8A6820] text-xs font-mono font-bold rounded-xl border border-[#A88432]/30 transition-colors">
                             <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i> nayakdmc.in
                         </a>
                     </div>
 
                     <div id="caseHeroContent" class="grid grid-cols-1 md:grid-cols-4 gap-3 text-xs">
-                        <div class="surface-evidence p-3 rounded-xl border-t-2 border-t-gold-400">
-                            <div class="text-[10px] font-bold text-gold-400 uppercase mb-1">01 CHALLENGE</div>
-                            <p class="text-slate-300 leading-relaxed">Kalyan-Dombivli micro-market lacked a unified regional infrastructure growth narrative for homebuyers.</p>
+                        <div class="surface-evidence p-3 rounded-xl border-t-2 border-t-[#A88432] bg-[#FBFAF6]">
+                            <div class="text-[10px] font-bold text-[#A88432] uppercase mb-1">01 CHALLENGE</div>
+                            <p class="text-[#475569] leading-relaxed">Kalyan-Dombivli micro-market lacked a unified regional infrastructure growth narrative for homebuyers.</p>
                         </div>
-                        <div class="surface-evidence p-3 rounded-xl border-t-2 border-t-gold-300">
-                            <div class="text-[10px] font-bold text-gold-300 uppercase mb-1">02 STRATEGY</div>
-                            <p class="text-slate-300 leading-relaxed">Conceive & build a standalone regional authority hub positioning Metro 5 & road connectivity.</p>
+                        <div class="surface-evidence p-3 rounded-xl border-t-2 border-t-[#8A6820] bg-[#FBFAF6]">
+                            <div class="text-[10px] font-bold text-[#8A6820] uppercase mb-1">02 STRATEGY</div>
+                            <p class="text-[#475569] leading-relaxed">Conceive & build a standalone regional authority hub positioning Metro 5 & road connectivity.</p>
                         </div>
-                        <div class="surface-evidence p-3 rounded-xl border-t-2 border-t-blue-400">
-                            <div class="text-[10px] font-bold text-blue-400 uppercase mb-1">03 EXECUTION</div>
-                            <p class="text-slate-300 leading-relaxed">Engineered custom sub-2s website code base with buyer guides, floor plan downloads & WhatsApp drip.</p>
+                        <div class="surface-evidence p-3 rounded-xl border-t-2 border-t-[#2563EB] bg-[#FBFAF6]">
+                            <div class="text-[10px] font-bold text-[#2563EB] uppercase mb-1">03 EXECUTION</div>
+                            <p class="text-[#475569] leading-relaxed">Engineered custom sub-2s website code base with buyer guides, floor plan downloads & WhatsApp drip.</p>
                         </div>
-                        <div class="surface-featured p-3 rounded-xl border-t-2 border-t-emerald-400 bg-slate-950">
-                            <div class="text-[10px] font-bold text-emerald-400 uppercase mb-1">04 EVIDENCE</div>
-                            <p class="text-slate-200 font-semibold leading-relaxed">Live production domain deployed at <span class="font-mono text-gold-300">nayakdmc.in</span> driving organic buyer traffic.</p>
+                        <div class="p-3 rounded-xl border-t-2 border-t-[#15803D] bg-[#172033] text-white">
+                            <div class="text-[10px] font-bold text-[#15803D] uppercase mb-1">04 EVIDENCE</div>
+                            <p class="text-[#CBD5E1] font-semibold leading-relaxed">Live production domain deployed at <span class="font-mono text-[#C5A24A]">nayakdmc.in</span> driving organic buyer traffic.</p>
                         </div>
                     </div>
                 </div>
 
                 <!-- SUPPORTING CASE TABS -->
                 <div class="grid grid-cols-1 sm:grid-cols-4 gap-2.5">
-                    <button onclick="selectCaseStudy(0)" class="surface-featured p-3 rounded-xl text-left border-l-4 border-l-gold-400 hover:border-gold-300 transition-all cursor-pointer">
-                        <div class="text-[10px] font-bold text-gold-400 font-mono">CASE 01</div>
+                    <button onclick="selectCaseStudy(0)" class="p-3 rounded-xl text-left border-l-4 border-l-[#A88432] bg-[#172033] text-white hover:border-[#C5A24A] transition-all cursor-pointer">
+                        <div class="text-[10px] font-bold text-[#C5A24A] font-mono">CASE 01</div>
                         <div class="text-xs font-bold text-white mt-0.5">Naya KDMC Hub</div>
-                        <div class="text-[10px] text-slate-400 mt-0.5">Location Positioning</div>
+                        <div class="text-[10px] text-[#CBD5E1] mt-0.5">Location Positioning</div>
                     </button>
-                    <button onclick="selectCaseStudy(1)" class="surface-evidence p-3 rounded-xl text-left border-l-4 border-l-blue-400 hover:border-gold-400 transition-all cursor-pointer">
-                        <div class="text-[10px] font-bold text-blue-400 font-mono">CASE 02</div>
-                        <div class="text-xs font-bold text-white mt-0.5">Krishna Trident</div>
-                        <div class="text-[10px] text-slate-400 mt-0.5">Flagship Launch</div>
+                    <button onclick="selectCaseStudy(1)" class="surface-evidence p-3 rounded-xl text-left border-l-4 border-l-[#2563EB] bg-[#FBFAF6] border border-[#D5CEC0] hover:border-[#A88432] transition-all cursor-pointer">
+                        <div class="text-[10px] font-bold text-[#2563EB] font-mono">CASE 02</div>
+                        <div class="text-xs font-bold text-[#172033] mt-0.5">Krishna Trident</div>
+                        <div class="text-[10px] text-[#475569] mt-0.5">Flagship Launch</div>
                     </button>
-                    <button onclick="selectCaseStudy(2)" class="surface-evidence p-3 rounded-xl text-left border-l-4 border-l-blue-400 hover:border-gold-400 transition-all cursor-pointer">
-                        <div class="text-[10px] font-bold text-blue-400 font-mono">CASE 03</div>
-                        <div class="text-xs font-bold text-white mt-0.5">Festive Blitz</div>
-                        <div class="text-[10px] text-slate-400 mt-0.5">Ganesh & Diwali</div>
+                    <button onclick="selectCaseStudy(2)" class="surface-evidence p-3 rounded-xl text-left border-l-4 border-l-[#2563EB] bg-[#FBFAF6] border border-[#D5CEC0] hover:border-[#A88432] transition-all cursor-pointer">
+                        <div class="text-[10px] font-bold text-[#2563EB] font-mono">CASE 03</div>
+                        <div class="text-xs font-bold text-[#172033] mt-0.5">Festive Blitz</div>
+                        <div class="text-[10px] text-[#475569] mt-0.5">Ganesh & Diwali</div>
                     </button>
-                    <button onclick="selectCaseStudy(3)" class="surface-evidence p-3 rounded-xl text-left border-l-4 border-l-emerald-400 hover:border-gold-400 transition-all cursor-pointer">
-                        <div class="text-[10px] font-bold text-emerald-400 font-mono">CASE 04</div>
-                        <div class="text-xs font-bold text-white mt-0.5">Gold Class Series</div>
-                        <div class="text-[10px] text-slate-400 mt-0.5">Umbrella Brand</div>
+                    <button onclick="selectCaseStudy(3)" class="surface-evidence p-3 rounded-xl text-left border-l-4 border-l-[#15803D] bg-[#FBFAF6] border border-[#D5CEC0] hover:border-[#A88432] transition-all cursor-pointer">
+                        <div class="text-[10px] font-bold text-[#15803D] font-mono">CASE 04</div>
+                        <div class="text-xs font-bold text-[#172033] mt-0.5">Gold Class Series</div>
+                        <div class="text-[10px] text-[#475569] mt-0.5">Umbrella Brand</div>
+                    </button>
                 </div>
             </div>
         </section>
@@ -911,75 +1000,75 @@
             <div class="slide-content w-full">
                 <div class="flex items-center justify-between mb-2">
                     <span class="slide-eyebrow text-xs font-bold uppercase tracking-wider flex items-center gap-2">
-                        <span class="w-2 h-2 rounded-full bg-gold-400"></span> Slide 05 / ATL Outdoor Media & Procurement Process
+                        <span class="w-2 h-2 rounded-full bg-[#A88432]"></span> Slide 05 / ATL Outdoor Media & Procurement Process
                     </span>
-                    <span class="slide-meta text-[11px] font-mono bg-slate-900/90 px-2.5 py-0.5 rounded-full border border-gold-500/40 font-semibold shadow-inner">Mass Market Visibility & Vendor Control</span>
+                    <span class="slide-meta text-[11px] font-mono bg-[#FBFAF6] px-2.5 py-0.5 rounded-full border border-[#D5CEC0] text-[#8A6820] font-semibold shadow-sm">Mass Market Visibility & Vendor Control</span>
                 </div>
 
                 <div class="mb-3">
-                    <h2 class="slide-title text-xl sm:text-2xl font-bold text-white font-serif">ATL Outdoor Media & Print Procurement Operation</h2>
-                    <p class="slide-subtitle text-xs text-slate-200 font-light mt-0.5">Managing high-visibility billboard locations, newspaper front jackets, print paper procurement, and vendor SLAs.</p>
+                    <h2 class="slide-title text-xl sm:text-2xl font-bold text-[#172033] font-serif">ATL Outdoor Media & Print Procurement Operation</h2>
+                    <p class="slide-subtitle text-xs text-[#475569] font-normal mt-0.5">Managing high-visibility billboard locations, newspaper front jackets, print paper procurement, and vendor SLAs.</p>
                 </div>
 
-                <!-- 6-STAGE LINEAR OPERATIONAL PROCESS FLOW -->
-                <div class="surface-featured p-4 rounded-2xl mb-4 border border-gold-500/30">
-                    <div class="text-[10px] font-bold text-gold-400 uppercase tracking-widest text-center mb-3">PHYSICAL MEDIA OPERATIONAL PROCESS</div>
+                <!-- 6-STAGE LINEAR OPERATIONAL PROCESS FLOW (Featured Dark Navy Strategy Panel) -->
+                <div class="surface-featured p-4 rounded-2xl mb-4 border border-[#A88432]/40 bg-[#172033]">
+                    <div class="text-[10px] font-bold text-[#C5A24A] uppercase tracking-widest text-center mb-3">PHYSICAL MEDIA OPERATIONAL PROCESS</div>
                     
                     <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-2 text-center">
-                        <div class="surface-evidence p-3 rounded-xl border-t-2 border-t-gold-400">
-                            <div class="text-[10px] font-bold text-gold-400">STAGE 01</div>
-                            <div class="text-xs font-bold text-white mt-0.5">Market Intel</div>
-                            <div class="text-[10px] text-slate-400 mt-0.5">Catchment analysis</div>
+                        <div class="surface-evidence p-3 rounded-xl border-t-2 border-t-[#A88432] bg-[#FBFAF6]">
+                            <div class="text-[10px] font-bold text-[#A88432]">STAGE 01</div>
+                            <div class="text-xs font-bold text-[#172033] mt-0.5">Market Intel</div>
+                            <div class="text-[10px] text-[#475569] mt-0.5">Catchment analysis</div>
                         </div>
-                        <div class="surface-evidence p-3 rounded-xl border-t-2 border-t-gold-400">
-                            <div class="text-[10px] font-bold text-gold-400">STAGE 02</div>
-                            <div class="text-xs font-bold text-white mt-0.5">Site Selection</div>
-                            <div class="text-[10px] text-slate-400 mt-0.5">Highways & transit hubs</div>
+                        <div class="surface-evidence p-3 rounded-xl border-t-2 border-t-[#A88432] bg-[#FBFAF6]">
+                            <div class="text-[10px] font-bold text-[#A88432]">STAGE 02</div>
+                            <div class="text-xs font-bold text-[#172033] mt-0.5">Site Selection</div>
+                            <div class="text-[10px] text-[#475569] mt-0.5">Highways & transit hubs</div>
                         </div>
-                        <div class="surface-featured p-3 rounded-xl border-t-2 border-t-gold-400 bg-slate-950">
-                            <div class="text-[9px] font-bold text-gold-400 font-mono uppercase">★ EXECUTIVE OWNERSHIP</div>
+                        <div class="p-3 rounded-xl border-t-2 border-t-[#A88432] bg-[#0B1120] text-white">
+                            <div class="text-[9px] font-bold text-[#C5A24A] font-mono uppercase">★ EXECUTIVE OWNERSHIP</div>
                             <div class="text-xs font-bold text-white mt-0.5">03 Negotiation</div>
-                            <div class="text-[10px] text-gold-300 mt-0.5">Media buying & rates</div>
+                            <div class="text-[10px] text-[#CBD5E1] mt-0.5">Media buying & rates</div>
                         </div>
-                        <div class="surface-evidence p-3 rounded-xl border-t-2 border-t-blue-400">
-                            <div class="text-[10px] font-bold text-blue-400">STAGE 04</div>
-                            <div class="text-xs font-bold text-white mt-0.5">Media Execution</div>
-                            <div class="text-[10px] text-slate-400 mt-0.5">Flex, jackets & kiosks</div>
+                        <div class="surface-evidence p-3 rounded-xl border-t-2 border-t-[#2563EB] bg-[#FBFAF6]">
+                            <div class="text-[10px] font-bold text-[#2563EB]">STAGE 04</div>
+                            <div class="text-xs font-bold text-[#172033] mt-0.5">Media Execution</div>
+                            <div class="text-[10px] text-[#475569] mt-0.5">Flex, jackets & kiosks</div>
                         </div>
-                        <div class="surface-featured p-3 rounded-xl border-t-2 border-t-emerald-400 bg-slate-950">
-                            <div class="text-[9px] font-bold text-emerald-400 font-mono uppercase">★ EXECUTIVE OWNERSHIP</div>
+                        <div class="p-3 rounded-xl border-t-2 border-t-[#15803D] bg-[#0B1120] text-white">
+                            <div class="text-[9px] font-bold text-[#15803D] font-mono uppercase">★ EXECUTIVE OWNERSHIP</div>
                             <div class="text-xs font-bold text-white mt-0.5">05 Quality Control</div>
-                            <div class="text-[10px] text-emerald-300 mt-0.5">Illumination & sightlines</div>
+                            <div class="text-[10px] text-[#CBD5E1] mt-0.5">Illumination & sightlines</div>
                         </div>
-                        <div class="surface-evidence p-3 rounded-xl border-t-2 border-t-emerald-400">
-                            <div class="text-[10px] font-bold text-emerald-400">STAGE 06</div>
-                            <div class="text-xs font-bold text-white mt-0.5">Tracking</div>
-                            <div class="text-[10px] text-slate-400 mt-0.5">QR & call attribution</div>
+                        <div class="surface-evidence p-3 rounded-xl border-t-2 border-t-[#15803D] bg-[#FBFAF6]">
+                            <div class="text-[10px] font-bold text-[#15803D]">STAGE 06</div>
+                            <div class="text-xs font-bold text-[#172033] mt-0.5">Tracking</div>
+                            <div class="text-[10px] text-[#475569] mt-0.5">QR & call attribution</div>
                         </div>
                     </div>
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-3.5 items-stretch">
-                    <div class="surface-evidence p-4 rounded-2xl border-t-2 border-t-gold-500">
+                    <div class="surface-evidence p-4 rounded-2xl border-t-2 border-t-[#A88432] bg-[#FBFAF6] border border-[#D5CEC0]">
                         <div class="flex items-center justify-between mb-1">
-                            <div class="text-xs font-bold text-gold-400 uppercase"><i class="fa-solid fa-bullhorn mr-1.5"></i> Billboards & Outdoor</div>
+                            <div class="text-xs font-bold text-[#A88432] uppercase"><i class="fa-solid fa-bullhorn mr-1.5"></i> Billboards & Outdoor</div>
                             <span class="evidence-tag">↗ Campaign Asset</span>
                         </div>
-                        <p class="text-xs text-slate-300 leading-relaxed mt-1">Negotiated arterial highway hoardings, bus shelters, and railway station branding across key buyer corridors.</p>
+                        <p class="text-xs text-[#475569] leading-relaxed mt-1">Negotiated arterial highway hoardings, bus shelters, and railway station branding across key buyer corridors.</p>
                     </div>
-                    <div class="surface-evidence p-4 rounded-2xl border-t-2 border-t-gold-400">
+                    <div class="surface-evidence p-4 rounded-2xl border-t-2 border-t-[#A88432] bg-[#FBFAF6] border border-[#D5CEC0]">
                         <div class="flex items-center justify-between mb-1">
-                            <div class="text-xs font-bold text-gold-400 uppercase"><i class="fa-solid fa-newspaper mr-1.5"></i> Newspaper Blitz</div>
+                            <div class="text-xs font-bold text-[#A88432] uppercase"><i class="fa-solid fa-newspaper mr-1.5"></i> Newspaper Blitz</div>
                             <span class="evidence-tag">↗ Campaign Asset</span>
                         </div>
-                        <p class="text-xs text-slate-300 leading-relaxed mt-1">Executed front-page newspaper jackets and display ads coordinated with festive buying weekends.</p>
+                        <p class="text-xs text-[#475569] leading-relaxed mt-1">Executed front-page newspaper jackets and display ads coordinated with festive buying weekends.</p>
                     </div>
-                    <div class="surface-evidence p-4 rounded-2xl border-t-2 border-t-blue-400">
+                    <div class="surface-evidence p-4 rounded-2xl border-t-2 border-t-[#2563EB] bg-[#FBFAF6] border border-[#D5CEC0]">
                         <div class="flex items-center justify-between mb-1">
-                            <div class="text-xs font-bold text-blue-400 uppercase"><i class="fa-solid fa-print mr-1.5"></i> Print Procurement</div>
+                            <div class="text-xs font-bold text-[#2563EB] uppercase"><i class="fa-solid fa-print mr-1.5"></i> Print Procurement</div>
                             <span class="evidence-tag">↗ System Architecture</span>
                         </div>
-                        <p class="text-xs text-slate-300 leading-relaxed mt-1">Managed GSM paper selection, foil stamping, spot UV finishing, and vendor delivery timelines.</p>
+                        <p class="text-xs text-[#475569] leading-relaxed mt-1">Managed GSM paper selection, foil stamping, spot UV finishing, and vendor delivery timelines.</p>
                     </div>
                 </div>
             </div>
@@ -990,75 +1079,76 @@
             <div class="slide-content w-full">
                 <div class="flex items-center justify-between mb-2">
                     <span class="slide-eyebrow text-xs font-bold uppercase tracking-wider flex items-center gap-2">
-                        <span class="w-2 h-2 rounded-full bg-gold-400"></span> Slide 06 / Channel Distribution Ecosystem
+                        <span class="w-2 h-2 rounded-full bg-[#A88432]"></span> Slide 06 / Channel Distribution Ecosystem
                     </span>
-                    <span class="slide-meta text-xs text-slate-200">Offline Customer & Channel Activation</span>
+                    <span class="slide-meta text-xs text-[#475569] font-medium">Offline Customer & Channel Activation</span>
                 </div>
 
                 <div class="mb-3">
-                    <h2 class="slide-title text-xl sm:text-2xl font-bold text-white font-serif">MCHI Property Expos, Channel Partners & Referrals</h2>
-                    <p class="slide-subtitle text-xs text-slate-200 font-light mt-0.5">Designing expo pavilions, driving Channel Partner (CP) broker network engagement, and executing resident referral drives.</p>
+                    <h2 class="slide-title text-xl sm:text-2xl font-bold text-[#172033] font-serif">MCHI Property Expos, Channel Partners & Referrals</h2>
+                    <p class="slide-subtitle text-xs text-[#475569] font-normal mt-0.5">Designing expo pavilions, driving Channel Partner (CP) broker network engagement, and executing resident referral drives.</p>
                 </div>
 
                 <!-- VISUAL BRANCHING CHANNEL DISTRIBUTION ECOSYSTEM -->
-                <div class="surface-featured p-4.5 rounded-2xl mb-4 border border-gold-500/30 shadow-2xl">
-                    <div class="text-[10px] font-bold text-gold-400 uppercase tracking-widest text-center mb-3">DISTRIBUTION ECOSYSTEM PIPELINE</div>
+                <div class="pipeline-panel p-4 rounded-2xl mb-4 shadow-sm">
+                    <div class="text-[10px] font-bold text-[#A88432] uppercase tracking-widest text-center mb-3">DISTRIBUTION ECOSYSTEM PIPELINE</div>
                     
                     <div class="flex flex-col lg:flex-row items-center justify-between gap-3 text-center">
-                        <div class="surface-evidence p-3 rounded-xl flex-1 w-full border-t-2 border-t-gold-400">
-                            <div class="text-xs font-bold text-white mb-0.5">DEVELOPER GROUP</div>
-                            <div class="text-[10px] text-gold-300">Inventory & Strategy</div>
+                        <div class="surface-evidence p-3 rounded-xl flex-1 w-full border-t-2 border-t-[#A88432] bg-[#FBFAF6]">
+                            <div class="text-xs font-bold text-[#172033] mb-0.5">DEVELOPER GROUP</div>
+                            <div class="text-[10px] text-[#8A6820] font-medium">Inventory & Strategy</div>
                         </div>
 
-                        <div class="hidden lg:block text-slate-500 text-sm font-bold"><i class="fa-solid fa-arrow-right"></i></div>
-                        <div class="lg:hidden text-slate-500 text-xs my-1"><i class="fa-solid fa-arrow-down"></i></div>
+                        <div class="hidden lg:block text-[#A88432] text-sm font-bold"><i class="fa-solid fa-arrow-right"></i></div>
+                        <div class="lg:hidden text-[#A88432] text-xs my-1"><i class="fa-solid fa-arrow-down"></i></div>
 
                         <!-- Branching Distribution Layer -->
                         <div class="flex-1 w-full space-y-1.5">
-                            <div class="surface-evidence p-2 rounded-lg border-l-2 border-l-gold-400 text-xs font-bold text-white flex items-center justify-between">
-                                <span><i class="fa-solid fa-building-flag text-gold-400 mr-1.5"></i> MCHI Property Expos</span>
+                            <div class="surface-evidence p-2 rounded-lg border-l-2 border-l-[#A88432] bg-[#FBFAF6] text-xs font-bold text-[#172033] flex items-center justify-between">
+                                <span><i class="fa-solid fa-building-flag text-[#A88432] mr-1.5"></i> MCHI Property Expos</span>
                                 <span class="evidence-tag">↗ Asset</span>
                             </div>
-                            <div class="surface-evidence p-2 rounded-lg border-l-2 border-l-blue-400 text-xs font-bold text-white flex items-center justify-between">
-                                <span><i class="fa-solid fa-handshake text-blue-400 mr-1.5"></i> CP Broker Meets (/partner)</span>
+                            <div class="surface-evidence p-2 rounded-lg border-l-2 border-l-[#2563EB] bg-[#FBFAF6] text-xs font-bold text-[#172033] flex items-center justify-between">
+                                <span><i class="fa-solid fa-handshake text-[#2563EB] mr-1.5"></i> CP Broker Meets (/partner)</span>
                                 <span class="evidence-tag">↗ Portal</span>
                             </div>
-                            <div class="surface-evidence p-2 rounded-lg border-l-2 border-l-emerald-400 text-xs font-bold text-white flex items-center justify-between">
-                                <span><i class="fa-solid fa-users text-emerald-400 mr-1.5"></i> Resident Referrals (/referral)</span>
+                            <div class="surface-evidence p-2 rounded-lg border-l-2 border-l-[#15803D] bg-[#FBFAF6] text-xs font-bold text-[#172033] flex items-center justify-between">
+                                <span><i class="fa-solid fa-users text-[#15803D] mr-1.5"></i> Resident Referrals (/referral)</span>
                                 <span class="evidence-tag">↗ Engine</span>
                             </div>
                         </div>
 
-                        <div class="hidden lg:block text-slate-500 text-sm font-bold"><i class="fa-solid fa-arrow-right"></i></div>
-                        <div class="lg:hidden text-slate-500 text-xs my-1"><i class="fa-solid fa-arrow-down"></i></div>
+                        <div class="hidden lg:block text-[#A88432] text-sm font-bold"><i class="fa-solid fa-arrow-right"></i></div>
+                        <div class="lg:hidden text-[#A88432] text-xs my-1"><i class="fa-solid fa-arrow-down"></i></div>
 
-                        <div class="surface-evidence p-3 rounded-xl flex-1 w-full border-t-2 border-t-emerald-400">
-                            <div class="text-xs font-bold text-white mb-0.5">SITE VISITS</div>
-                            <div class="text-[10px] text-emerald-300">Gallery Experience</div>
+                        <div class="surface-evidence p-3 rounded-xl flex-1 w-full border-t-2 border-t-[#15803D] bg-[#FBFAF6]">
+                            <div class="text-xs font-bold text-[#172033] mb-0.5">SITE VISITS</div>
+                            <div class="text-[10px] text-[#15803D] font-medium">Gallery Experience</div>
                         </div>
 
-                        <div class="hidden lg:block text-slate-500 text-sm font-bold"><i class="fa-solid fa-arrow-right"></i></div>
-                        <div class="lg:hidden text-slate-500 text-xs my-1"><i class="fa-solid fa-arrow-down"></i></div>
+                        <div class="hidden lg:block text-[#A88432] text-sm font-bold"><i class="fa-solid fa-arrow-right"></i></div>
+                        <div class="lg:hidden text-[#A88432] text-xs my-1"><i class="fa-solid fa-arrow-down"></i></div>
 
-                        <div class="surface-featured p-3 rounded-xl flex-1 w-full border-t-2 border-t-gold-400 bg-slate-950">
-                            <div class="text-xs font-bold text-gold-400 mb-0.5">SALES CLOSINGS</div>
-                            <div class="text-[10px] text-slate-300">Confirmed Bookings</div>
+                        <!-- OUTCOME: stays dark for visual contrast -->
+                        <div class="p-3 rounded-xl flex-1 w-full border-t-2 border-t-[#A88432] bg-[#172033] text-white">
+                            <div class="text-xs font-bold text-[#C5A24A] mb-0.5">SALES CLOSINGS</div>
+                            <div class="text-[10px] text-[#CBD5E1]">Confirmed Bookings</div>
                         </div>
                     </div>
                 </div>
 
                 <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
-                    <div class="surface-evidence p-3.5 rounded-2xl border-t-2 border-t-gold-400">
-                        <div class="text-xs font-bold text-white mb-1"><i class="fa-solid fa-building-flag text-gold-400 mr-1.5"></i> MCHI Property Expos</div>
-                        <p class="text-[11px] text-slate-300">Stall architecture, scale model placement, interactive screens, and sales host training.</p>
+                    <div class="surface-evidence p-3.5 rounded-2xl border-t-2 border-t-[#A88432] bg-[#FBFAF6] border border-[#D5CEC0]">
+                        <div class="text-xs font-bold text-[#172033] mb-1"><i class="fa-solid fa-building-flag text-[#A88432] mr-1.5"></i> MCHI Property Expos</div>
+                        <p class="text-[11px] text-[#475569]">Stall architecture, scale model placement, interactive screens, and sales host training.</p>
                     </div>
-                    <div class="surface-evidence p-3.5 rounded-2xl border-t-2 border-t-blue-400">
-                        <div class="text-xs font-bold text-white mb-1"><i class="fa-solid fa-handshake text-blue-400 mr-1.5"></i> CP Broker Meets</div>
-                        <p class="text-[11px] text-slate-300">Broker launch meets, incentive announcements, and digital CP portals (<span class="font-mono text-blue-300">/partner</span>).</p>
+                    <div class="surface-evidence p-3.5 rounded-2xl border-t-2 border-t-[#2563EB] bg-[#FBFAF6] border border-[#D5CEC0]">
+                        <div class="text-xs font-bold text-[#172033] mb-1"><i class="fa-solid fa-handshake text-[#2563EB] mr-1.5"></i> CP Broker Meets</div>
+                        <p class="text-[11px] text-[#475569]">Broker launch meets, incentive announcements, and digital CP portals (<span class="font-mono text-[#2563EB]">/partner</span>).</p>
                     </div>
-                    <div class="surface-evidence p-3.5 rounded-2xl border-t-2 border-t-emerald-400">
-                        <div class="text-xs font-bold text-white mb-1"><i class="fa-solid fa-users text-emerald-400 mr-1.5"></i> Resident Referrals</div>
-                        <p class="text-[11px] text-slate-300">Customer engagement events and digital referral tools (<span class="font-mono text-emerald-300">/referral</span>).</p>
+                    <div class="surface-evidence p-3.5 rounded-2xl border-t-2 border-t-[#15803D] bg-[#FBFAF6] border border-[#D5CEC0]">
+                        <div class="text-xs font-bold text-[#172033] mb-1"><i class="fa-solid fa-users text-[#15803D] mr-1.5"></i> Resident Referrals</div>
+                        <p class="text-[11px] text-[#475569]">Customer engagement events and digital referral tools (<span class="font-mono text-[#15803D]">/referral</span>).</p>
                     </div>
                 </div>
             </div>
@@ -1069,70 +1159,71 @@
             <div class="slide-content w-full">
                 <div class="flex items-center justify-between mb-2">
                     <span class="slide-eyebrow text-xs font-bold uppercase tracking-wider flex items-center gap-2">
-                        <span class="w-2 h-2 rounded-full bg-gold-400"></span> Slide 07 / Physical Gallery Customer Journey & Governance
+                        <span class="w-2 h-2 rounded-full bg-[#A88432]"></span> Slide 07 / Physical Gallery Customer Journey & Governance
                     </span>
-                    <span class="slide-meta text-[11px] font-mono bg-slate-900/90 px-2.5 py-0.5 rounded-full border border-gold-500/40 font-semibold shadow-inner">Signature Experience & Saturday Audit</span>
+                    <span class="slide-meta text-[11px] font-mono bg-[#FBFAF6] px-2.5 py-0.5 rounded-full border border-[#D5CEC0] text-[#8A6820] font-semibold shadow-sm">Signature Experience & Saturday Audit</span>
                 </div>
 
                 <div class="mb-3">
-                    <h2 class="slide-title text-xl sm:text-2xl font-bold text-white font-serif">Sales Gallery Customer Journey & Operational Readiness</h2>
-                    <p class="slide-subtitle text-xs text-slate-200 font-light mt-0.5">Designing physical entrance visioning, spatial customer flows, and Saturday pre-launch operational audits.</p>
+                    <h2 class="slide-title text-xl sm:text-2xl font-bold text-[#172033] font-serif">Sales Gallery Customer Journey & Operational Readiness</h2>
+                    <p class="slide-subtitle text-xs text-[#475569] font-normal mt-0.5">Designing physical entrance visioning, spatial customer flows, and Saturday pre-launch operational audits.</p>
                 </div>
 
                 <!-- TOP 70%: SIGNATURE CUSTOMER JOURNEY FLOW -->
-                <div class="surface-featured p-4.5 rounded-2xl mb-3 border border-gold-500/30 shadow-2xl">
+                <div class="pipeline-panel p-4 rounded-2xl mb-3 shadow-sm">
                     <div class="flex items-center justify-between mb-3">
-                        <span class="text-[10px] font-bold text-gold-400 uppercase tracking-widest">SIGNATURE CUSTOMER EXPERIENCE JOURNEY MAP</span>
+                        <span class="text-[10px] font-bold text-[#A88432] uppercase tracking-widest">SIGNATURE CUSTOMER EXPERIENCE JOURNEY MAP</span>
                         <span class="evidence-tag">↗ Gallery Spatial Map</span>
                     </div>
                     
                     <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-2 text-center">
-                        <div class="surface-evidence p-3 rounded-xl border-t-2 border-t-gold-400">
-                            <div class="text-[10px] font-bold text-gold-400">01 ARRIVE</div>
-                            <div class="text-xs font-bold text-white mt-0.5">Gate Welcome</div>
-                            <div class="text-[10px] text-slate-400 mt-0.5">Prestige Arch</div>
+                        <div class="surface-evidence p-3 rounded-xl border-t-2 border-t-[#A88432] bg-[#FBFAF6]">
+                            <div class="text-[10px] font-bold text-[#A88432]">01 ARRIVE</div>
+                            <div class="text-xs font-bold text-[#172033] mt-0.5">Gate Welcome</div>
+                            <div class="text-[10px] text-[#475569] mt-0.5">Prestige Arch</div>
                         </div>
-                        <div class="surface-evidence p-3 rounded-xl border-t-2 border-t-gold-400">
-                            <div class="text-[10px] font-bold text-gold-400">02 REGISTER</div>
-                            <div class="text-xs font-bold text-white mt-0.5">QR Check-in</div>
-                            <div class="text-[10px] text-slate-400 mt-0.5">Digital Desk</div>
+                        <div class="surface-evidence p-3 rounded-xl border-t-2 border-t-[#A88432] bg-[#FBFAF6]">
+                            <div class="text-[10px] font-bold text-[#A88432]">02 REGISTER</div>
+                            <div class="text-xs font-bold text-[#172033] mt-0.5">QR Check-in</div>
+                            <div class="text-[10px] text-[#475569] mt-0.5">Digital Desk</div>
                         </div>
-                        <div class="surface-evidence p-3 rounded-xl border-t-2 border-t-blue-400">
-                            <div class="text-[10px] font-bold text-blue-400">03 EXPERIENCE</div>
-                            <div class="text-xs font-bold text-white mt-0.5">Vision Wall</div>
-                            <div class="text-[10px] text-slate-400 mt-0.5">Metro 5 Story</div>
+                        <div class="surface-evidence p-3 rounded-xl border-t-2 border-t-[#2563EB] bg-[#FBFAF6]">
+                            <div class="text-[10px] font-bold text-[#2563EB]">03 EXPERIENCE</div>
+                            <div class="text-xs font-bold text-[#172033] mt-0.5">Vision Wall</div>
+                            <div class="text-[10px] text-[#475569] mt-0.5">Metro 5 Story</div>
                         </div>
-                        <div class="surface-evidence p-3 rounded-xl border-t-2 border-t-blue-400">
-                            <div class="text-[10px] font-bold text-blue-400">04 UNDERSTAND</div>
-                            <div class="text-xs font-bold text-white mt-0.5">Scale Model</div>
-                            <div class="text-[10px] text-slate-400 mt-0.5">Layout & Tech</div>
+                        <div class="surface-evidence p-3 rounded-xl border-t-2 border-t-[#2563EB] bg-[#FBFAF6]">
+                            <div class="text-[10px] font-bold text-[#2563EB]">04 UNDERSTAND</div>
+                            <div class="text-xs font-bold text-[#172033] mt-0.5">Scale Model</div>
+                            <div class="text-[10px] text-[#475569] mt-0.5">Layout & Tech</div>
                         </div>
-                        <div class="surface-evidence p-3 rounded-xl border-t-2 border-t-emerald-400">
-                            <div class="text-[10px] font-bold text-emerald-400">05 ENVISION</div>
-                            <div class="text-xs font-bold text-white mt-0.5">Sample Flat</div>
-                            <div class="text-[10px] text-slate-400 mt-0.5">Lifestyle Fit</div>
+                        <div class="surface-evidence p-3 rounded-xl border-t-2 border-t-[#15803D] bg-[#FBFAF6]">
+                            <div class="text-[10px] font-bold text-[#15803D]">05 ENVISION</div>
+                            <div class="text-xs font-bold text-[#172033] mt-0.5">Sample Flat</div>
+                            <div class="text-[10px] text-[#475569] mt-0.5">Lifestyle Fit</div>
                         </div>
-                        <div class="surface-featured p-3 rounded-xl border-t-2 border-t-gold-400 bg-slate-950">
-                            <div class="text-[10px] font-bold text-gold-400">06 CONVERT</div>
+                        <!-- OUTCOME: stays dark for visual contrast -->
+                        <div class="p-3 rounded-xl border-t-2 border-t-[#A88432] bg-[#172033] text-white">
+                            <div class="text-[10px] font-bold text-[#C5A24A]">06 CONVERT</div>
                             <div class="text-xs font-bold text-white mt-0.5">Discussion</div>
-                            <div class="text-[10px] text-gold-300 mt-0.5">Sales Closing</div>
+                            <div class="text-[10px] text-[#CBD5E1] mt-0.5">Sales Closing</div>
                         </div>
                     </div>
                 </div>
 
                 <!-- BOTTOM 30%: SATURDAY AUDIT OPERATIONAL GOVERNANCE -->
-                <div class="surface-evidence p-3.5 rounded-2xl border-l-4 border-l-gold-400">
-                    <div class="text-xs font-bold text-gold-400 uppercase tracking-wider mb-2 flex items-center justify-between">
+                <div class="surface-evidence p-3.5 rounded-2xl border-l-4 border-l-[#A88432] bg-[#FBFAF6] border border-[#D5CEC0]">
+                    <div class="text-xs font-bold text-[#A88432] uppercase tracking-wider mb-2 flex items-center justify-between">
                         <span class="flex items-center gap-2"><i class="fa-solid fa-clipboard-check"></i> 6-POINT SATURDAY PRE-LAUNCH OPERATIONAL AUDIT SYSTEM</span>
                         <span class="evidence-tag">↗ Operational Governance</span>
                     </div>
-                    <div class="grid grid-cols-2 md:grid-cols-6 gap-2 text-[11px] text-slate-300 text-center">
-                        <div class="bg-slate-950/90 p-2 rounded-xl border border-slate-800"><strong class="text-white block">1. Wayfinding</strong>Illumination & Signage</div>
-                        <div class="bg-slate-950/90 p-2 rounded-xl border border-slate-800"><strong class="text-white block">2. RERA</strong>Legal Disclaimers</div>
-                        <div class="bg-slate-950/90 p-2 rounded-xl border border-slate-800"><strong class="text-white block">3. Video Feeds</strong>AV Screens & Walkthroughs</div>
-                        <div class="bg-slate-950/90 p-2 rounded-xl border border-slate-800"><strong class="text-white block">4. Brochures</strong>Paper Stock Buffers</div>
-                        <div class="bg-slate-950/90 p-2 rounded-xl border border-slate-800"><strong class="text-white block">5. QR Standees</strong>Lead Capture Devices</div>
-                        <div class="bg-slate-950/90 p-2 rounded-xl border border-slate-800"><strong class="text-white block">6. Battle Cards</strong>Sales Table Enablement</div>
+                    <div class="grid grid-cols-2 md:grid-cols-6 gap-2 text-[11px] text-[#475569] text-center">
+                        <div class="bg-[#EEE9DE] p-2 rounded-xl border border-[#D5CEC0]"><strong class="text-[#172033] block">1. Wayfinding</strong>Illumination & Signage</div>
+                        <div class="bg-[#EEE9DE] p-2 rounded-xl border border-[#D5CEC0]"><strong class="text-[#172033] block">2. RERA</strong>Legal Disclaimers</div>
+                        <div class="bg-[#EEE9DE] p-2 rounded-xl border border-[#D5CEC0]"><strong class="text-[#172033] block">3. Video Feeds</strong>AV Screens & Walkthroughs</div>
+                        <div class="bg-[#EEE9DE] p-2 rounded-xl border border-[#D5CEC0]"><strong class="text-[#172033] block">4. Brochures</strong>Paper Stock Buffers</div>
+                        <div class="bg-[#EEE9DE] p-2 rounded-xl border border-[#D5CEC0]"><strong class="text-[#172033] block">5. QR Standees</strong>Lead Capture Devices</div>
+                        <div class="bg-[#EEE9DE] p-2 rounded-xl border border-[#D5CEC0]"><strong class="text-[#172033] block">6. Battle Cards</strong>Sales Table Enablement</div>
                     </div>
                 </div>
             </div>
@@ -1143,49 +1234,50 @@
             <div class="slide-content w-full">
                 <div class="flex items-center justify-between mb-2">
                     <span class="slide-eyebrow text-xs font-bold uppercase tracking-wider flex items-center gap-2">
-                        <span class="w-2 h-2 rounded-full bg-gold-400"></span> Slide 08 / Pre-Sales Ops & Sales Enablement System
+                        <span class="w-2 h-2 rounded-full bg-[#A88432]"></span> Slide 08 / Pre-Sales Ops & Sales Enablement System
                     </span>
-                    <span class="slide-meta text-[11px] font-mono bg-slate-900/90 px-2.5 py-0.5 rounded-full border border-gold-500/40 font-semibold shadow-inner">Pre-Sales Lead Funnel & Tools</span>
+                    <span class="slide-meta text-[11px] font-mono bg-[#FBFAF6] px-2.5 py-0.5 rounded-full border border-[#D5CEC0] text-[#8A6820] font-semibold shadow-sm">Pre-Sales Lead Funnel & Tools</span>
                 </div>
 
                 <div class="mb-3">
-                    <h2 class="slide-title text-xl sm:text-2xl font-bold text-white font-serif">Pre-Sales Operations & Sales Enablement System</h2>
-                    <p class="slide-subtitle text-xs text-slate-200 font-light mt-0.5">Framing lead qualification, CRM tagging, and 0-error financial tools within the sales closing enablement funnel.</p>
+                    <h2 class="slide-title text-xl sm:text-2xl font-bold text-[#172033] font-serif">Pre-Sales Operations & Sales Enablement System</h2>
+                    <p class="slide-subtitle text-xs text-[#475569] font-normal mt-0.5">Framing lead qualification, CRM tagging, and 0-error financial tools within the sales closing enablement funnel.</p>
                 </div>
 
                 <!-- SALES ENABLEMENT FUNNEL DIAGRAM -->
-                <div class="surface-featured p-4 rounded-2xl mb-4 border border-gold-500/30 shadow-2xl">
-                    <div class="text-[10px] font-bold text-gold-400 uppercase tracking-widest text-center mb-3">MARKETING-TO-CONVERSION ENABLEMENT PIPELINE</div>
+                <div class="pipeline-panel p-4 rounded-2xl mb-4 shadow-sm">
+                    <div class="text-[10px] font-bold text-[#A88432] uppercase tracking-widest text-center mb-3">MARKETING-TO-CONVERSION ENABLEMENT PIPELINE</div>
                     
                     <div class="flex flex-col md:flex-row items-center justify-between gap-2 text-center">
-                        <div class="surface-evidence p-2.5 rounded-xl flex-1 w-full border-t-2 border-t-gold-400">
-                            <div class="text-xs font-bold text-white">1. Marketing</div>
-                            <div class="text-[10px] text-gold-300">Meta, Search & CP</div>
+                        <div class="surface-evidence p-2.5 rounded-xl flex-1 w-full border-t-2 border-t-[#A88432] bg-[#FBFAF6]">
+                            <div class="text-xs font-bold text-[#172033]">1. Marketing</div>
+                            <div class="text-[10px] text-[#8A6820] font-medium">Meta, Search & CP</div>
                         </div>
-                        <div class="text-slate-500 font-bold"><i class="fa-solid fa-arrow-right hidden md:inline"></i><i class="fa-solid fa-arrow-down md:hidden"></i></div>
-                        <div class="surface-evidence p-2.5 rounded-xl flex-1 w-full border-t-2 border-t-blue-400">
-                            <div class="text-xs font-bold text-white">2. Lead Capture</div>
-                            <div class="text-[10px] text-blue-300">CRM Field Tagging</div>
+                        <div class="text-[#A88432] font-bold"><i class="fa-solid fa-arrow-right hidden md:inline"></i><i class="fa-solid fa-arrow-down md:hidden"></i></div>
+                        <div class="surface-evidence p-2.5 rounded-xl flex-1 w-full border-t-2 border-t-[#2563EB] bg-[#FBFAF6]">
+                            <div class="text-xs font-bold text-[#172033]">2. Lead Capture</div>
+                            <div class="text-[10px] text-[#2563EB] font-medium">CRM Field Tagging</div>
                         </div>
-                        <div class="text-slate-500 font-bold"><i class="fa-solid fa-arrow-right hidden md:inline"></i><i class="fa-solid fa-arrow-down md:hidden"></i></div>
-                        <div class="surface-evidence p-2.5 rounded-xl flex-1 w-full border-t-2 border-t-blue-400">
-                            <div class="text-xs font-bold text-white">3. Pre-Sales</div>
-                            <div class="text-[10px] text-blue-300">Call Scoring & Visit</div>
+                        <div class="text-[#A88432] font-bold"><i class="fa-solid fa-arrow-right hidden md:inline"></i><i class="fa-solid fa-arrow-down md:hidden"></i></div>
+                        <div class="surface-evidence p-2.5 rounded-xl flex-1 w-full border-t-2 border-t-[#2563EB] bg-[#FBFAF6]">
+                            <div class="text-xs font-bold text-[#172033]">3. Pre-Sales</div>
+                            <div class="text-[10px] text-[#2563EB] font-medium">Call Scoring & Visit</div>
                         </div>
-                        <div class="text-slate-500 font-bold"><i class="fa-solid fa-arrow-right hidden md:inline"></i><i class="fa-solid fa-arrow-down md:hidden"></i></div>
-                        <div class="surface-evidence p-2.5 rounded-xl flex-1 w-full border-t-2 border-t-emerald-400">
-                            <div class="text-xs font-bold text-white">4. Sales Table</div>
-                            <div class="text-[10px] text-emerald-300">Live Negotiation</div>
+                        <div class="text-[#A88432] font-bold"><i class="fa-solid fa-arrow-right hidden md:inline"></i><i class="fa-solid fa-arrow-down md:hidden"></i></div>
+                        <div class="surface-evidence p-2.5 rounded-xl flex-1 w-full border-t-2 border-t-[#15803D] bg-[#FBFAF6]">
+                            <div class="text-xs font-bold text-[#172033]">4. Sales Table</div>
+                            <div class="text-[10px] text-[#15803D] font-medium">Live Negotiation</div>
                         </div>
-                        <div class="text-slate-500 font-bold"><i class="fa-solid fa-arrow-right hidden md:inline"></i><i class="fa-solid fa-arrow-down md:hidden"></i></div>
-                        <div class="surface-evidence p-2.5 rounded-xl flex-1 w-full border-t-2 border-t-gold-400">
-                            <div class="text-xs font-bold text-white">5. Fin. Confidence</div>
-                            <div class="text-[10px] text-gold-300">Tablet EMI Tool</div>
+                        <div class="text-[#A88432] font-bold"><i class="fa-solid fa-arrow-right hidden md:inline"></i><i class="fa-solid fa-arrow-down md:hidden"></i></div>
+                        <div class="surface-evidence p-2.5 rounded-xl flex-1 w-full border-t-2 border-t-[#A88432] bg-[#FBFAF6]">
+                            <div class="text-xs font-bold text-[#172033]">5. Fin. Confidence</div>
+                            <div class="text-[10px] text-[#8A6820] font-medium">Tablet EMI Tool</div>
                         </div>
-                        <div class="text-slate-500 font-bold"><i class="fa-solid fa-arrow-right hidden md:inline"></i><i class="fa-solid fa-arrow-down md:hidden"></i></div>
-                        <div class="surface-featured p-2.5 rounded-xl flex-1 w-full border-t-2 border-t-gold-400 bg-slate-950">
-                            <div class="text-xs font-bold text-gold-400">6. Booking</div>
-                            <div class="text-[10px] text-slate-300">Closed Deal</div>
+                        <div class="text-[#A88432] font-bold"><i class="fa-solid fa-arrow-right hidden md:inline"></i><i class="fa-solid fa-arrow-down md:hidden"></i></div>
+                        <!-- OUTCOME: stays dark -->
+                        <div class="p-2.5 rounded-xl flex-1 w-full border-t-2 border-t-[#A88432] bg-[#172033] text-white">
+                            <div class="text-xs font-bold text-[#C5A24A]">6. Booking</div>
+                            <div class="text-[10px] text-[#CBD5E1]">Closed Deal</div>
                         </div>
                     </div>
                 </div>
@@ -1193,70 +1285,70 @@
                 <!-- PRE-SALES & CALCULATORS MATRIX -->
                 <div class="grid grid-cols-1 lg:grid-cols-12 gap-3.5 items-stretch mb-2">
                     
-                    <div class="lg:col-span-6 surface-evidence p-3.5 rounded-3xl border-l-4 border-l-gold-400 flex flex-col justify-between h-full shadow-xl">
+                    <div class="lg:col-span-6 surface-evidence p-3.5 rounded-3xl border-l-4 border-l-[#A88432] flex flex-col justify-between h-full shadow-md bg-[#FBFAF6] border border-[#D5CEC0]">
                         <div>
                             <div class="flex items-center justify-between mb-2">
-                                <span class="text-xs font-bold text-gold-400 uppercase tracking-wider">Pre-Sales Leadership & CRM Governance</span>
+                                <span class="text-xs font-bold text-[#A88432] uppercase tracking-wider">Pre-Sales Leadership & CRM Governance</span>
                                 <span class="evidence-tag">↗ System Architecture</span>
                             </div>
                             
                             <div class="space-y-2 text-xs">
-                                <div class="bg-slate-950/90 p-2 rounded-xl border border-slate-800/80">
-                                    <strong class="text-white block"><i class="fa-solid fa-headset text-gold-400 mr-1.5" aria-hidden="true"></i> 1. Pre-Sales Call Center Workflow</strong>
-                                    <span class="text-[11px] text-slate-300">Managed inbound inquiry handoffs, lead scoring, call script standardization, and site-visit appointment scheduling.</span>
+                                <div class="bg-[#EEE9DE] p-2 rounded-xl border border-[#D5CEC0]">
+                                    <strong class="text-[#172033] block"><i class="fa-solid fa-headset text-[#A88432] mr-1.5" aria-hidden="true"></i> 1. Pre-Sales Call Center Workflow</strong>
+                                    <span class="text-[11px] text-[#475569]">Managed inbound inquiry handoffs, lead scoring, call script standardization, and site-visit appointment scheduling.</span>
                                 </div>
                                 
-                                <div class="bg-slate-950/90 p-2 rounded-xl border border-slate-800/80">
-                                    <strong class="text-white block"><i class="fa-solid fa-chart-pie text-blue-400 mr-1.5" aria-hidden="true"></i> 2. Salesforce & 360Enrich Field Tagging</strong>
-                                    <span class="text-[11px] text-slate-300">Coordinated with CRM engineers for source attribution, UTM parameters, and lead-to-booking pipeline visibility.</span>
+                                <div class="bg-[#EEE9DE] p-2 rounded-xl border border-[#D5CEC0]">
+                                    <strong class="text-[#172033] block"><i class="fa-solid fa-chart-pie text-[#2563EB] mr-1.5" aria-hidden="true"></i> 2. Salesforce & 360Enrich Field Tagging</strong>
+                                    <span class="text-[11px] text-[#475569]">Coordinated with CRM engineers for source attribution, UTM parameters, and lead-to-booking pipeline visibility.</span>
                                 </div>
 
-                                <div class="bg-slate-950/90 p-2 rounded-xl border border-slate-800/80">
-                                    <strong class="text-white block"><i class="fa-solid fa-handshake-simple text-gold-400 mr-1.5" aria-hidden="true"></i> 3. Live Sales Closing Tools on Site</strong>
-                                    <span class="text-[11px] text-slate-300">Sales executives use our website during negotiations to calculate live EMIs without relying on third-party portals.</span>
+                                <div class="bg-[#EEE9DE] p-2 rounded-xl border border-[#D5CEC0]">
+                                    <strong class="text-[#172033] block"><i class="fa-solid fa-handshake-simple text-[#A88432] mr-1.5" aria-hidden="true"></i> 3. Live Sales Closing Tools on Site</strong>
+                                    <span class="text-[11px] text-[#475569]">Sales executives use our website during negotiations to calculate live EMIs without relying on third-party portals.</span>
                                 </div>
                             </div>
                         </div>
-                        <span class="text-[10px] text-gold-400 font-mono block mt-2 font-semibold">Pre-Sales & Sales Enablement Synergy</span>
+                        <span class="text-[10px] text-[#8A6820] font-mono block mt-2 font-semibold">Pre-Sales & Sales Enablement Synergy</span>
                     </div>
 
-                    <div class="lg:col-span-6 surface-evidence p-3.5 rounded-3xl flex flex-col justify-between h-full shadow-xl">
+                    <div class="lg:col-span-6 surface-evidence p-3.5 rounded-3xl flex flex-col justify-between h-full shadow-md bg-[#FBFAF6] border border-[#D5CEC0]">
                         <div>
-                            <div class="text-xs font-bold text-gold-400 uppercase tracking-wider mb-2">Live Financial Calculator Links</div>
+                            <div class="text-xs font-bold text-[#A88432] uppercase tracking-wider mb-2">Live Financial Calculator Links</div>
 
                             <div class="space-y-1.5 text-xs">
-                                <a href="https://sonawanegroup.com/financial-calculators" target="_blank" rel="noopener noreferrer" class="block bg-slate-950/90 hover:bg-slate-900 p-1.5 rounded-xl border border-slate-800/80 transition-colors">
+                                <a href="https://sonawanegroup.com/financial-calculators" target="_blank" rel="noopener noreferrer" class="block bg-[#EEE9DE] hover:bg-[#E2DDD0] p-1.5 rounded-xl border border-[#D5CEC0] transition-colors">
                                     <div class="flex items-center justify-between">
-                                        <span class="font-bold text-white"><i class="fa-solid fa-calculator text-gold-400 mr-2" aria-hidden="true"></i> Financial Calculators Hub</span>
-                                        <span class="text-[10px] font-mono text-gold-400">/financial-calculators <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></span>
+                                        <span class="font-bold text-[#172033]"><i class="fa-solid fa-calculator text-[#A88432] mr-2" aria-hidden="true"></i> Financial Calculators Hub</span>
+                                        <span class="text-[10px] font-mono text-[#8A6820] font-semibold">/financial-calculators <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></span>
                                     </div>
                                 </a>
 
-                                <a href="https://sonawanegroup.com/emi" target="_blank" rel="noopener noreferrer" class="block bg-slate-950/90 hover:bg-slate-900 p-1.5 rounded-xl border border-slate-800/80 transition-colors">
+                                <a href="https://sonawanegroup.com/emi" target="_blank" rel="noopener noreferrer" class="block bg-[#EEE9DE] hover:bg-[#E2DDD0] p-1.5 rounded-xl border border-[#D5CEC0] transition-colors">
                                     <div class="flex items-center justify-between">
-                                        <span class="font-bold text-white"><i class="fa-solid fa-piggy-bank text-gold-400 mr-2" aria-hidden="true"></i> Home Loan EMI Calculator</span>
-                                        <span class="text-[10px] font-mono text-gold-400">/emi <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></span>
+                                        <span class="font-bold text-[#172033]"><i class="fa-solid fa-piggy-bank text-[#A88432] mr-2" aria-hidden="true"></i> Home Loan EMI Calculator</span>
+                                        <span class="text-[10px] font-mono text-[#8A6820] font-semibold">/emi <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></span>
                                     </div>
                                 </a>
 
-                                <a href="https://sonawanegroup.com/home_affordability_calculator" target="_blank" rel="noopener noreferrer" class="block bg-slate-950/90 hover:bg-slate-900 p-1.5 rounded-xl border border-slate-800/80 transition-colors">
+                                <a href="https://sonawanegroup.com/home_affordability_calculator" target="_blank" rel="noopener noreferrer" class="block bg-[#EEE9DE] hover:bg-[#E2DDD0] p-1.5 rounded-xl border border-[#D5CEC0] transition-colors">
                                     <div class="flex items-center justify-between">
-                                        <span class="font-bold text-white"><i class="fa-solid fa-house-circle-check text-blue-400 mr-2" aria-hidden="true"></i> Home Affordability Calculator</span>
-                                        <span class="text-[10px] font-mono text-blue-400">/home_affordability_calculator <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></span>
+                                        <span class="font-bold text-[#172033]"><i class="fa-solid fa-house-circle-check text-[#2563EB] mr-2" aria-hidden="true"></i> Home Affordability Calculator</span>
+                                        <span class="text-[10px] font-mono text-[#2563EB] font-semibold">/home_affordability_calculator <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></span>
                                     </div>
                                 </a>
 
-                                <a href="https://sonawanegroup.com/loan-tenure-calculator" target="_blank" rel="noopener noreferrer" class="block bg-slate-950/90 hover:bg-slate-900 p-1.5 rounded-xl border border-slate-800/80 transition-colors">
+                                <a href="https://sonawanegroup.com/loan-tenure-calculator" target="_blank" rel="noopener noreferrer" class="block bg-[#EEE9DE] hover:bg-[#E2DDD0] p-1.5 rounded-xl border border-[#D5CEC0] transition-colors">
                                     <div class="flex items-center justify-between">
-                                        <span class="font-bold text-white"><i class="fa-solid fa-clock-rotate-left text-blue-400 mr-2" aria-hidden="true"></i> Loan Tenure Calculator</span>
-                                        <span class="text-[10px] font-mono text-blue-400">/loan-tenure-calculator <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></span>
+                                        <span class="font-bold text-[#172033]"><i class="fa-solid fa-clock-rotate-left text-[#2563EB] mr-2" aria-hidden="true"></i> Loan Tenure Calculator</span>
+                                        <span class="text-[10px] font-mono text-[#2563EB] font-semibold">/loan-tenure-calculator <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></span>
                                     </div>
                                 </a>
 
-                                <a href="https://sonawanegroup.com/area-converter" target="_blank" rel="noopener noreferrer" class="block bg-slate-950/90 hover:bg-slate-900 p-1.5 rounded-xl border border-slate-800/80 transition-colors">
+                                <a href="https://sonawanegroup.com/area-converter" target="_blank" rel="noopener noreferrer" class="block bg-[#EEE9DE] hover:bg-[#E2DDD0] p-1.5 rounded-xl border border-[#D5CEC0] transition-colors">
                                     <div class="flex items-center justify-between">
-                                        <span class="font-bold text-white"><i class="fa-solid fa-ruler-combined text-emerald-400 mr-2" aria-hidden="true"></i> Real Estate Area Converter</span>
-                                        <span class="text-[10px] font-mono text-emerald-400">/area-converter <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></span>
+                                        <span class="font-bold text-[#172033]"><i class="fa-solid fa-ruler-combined text-[#15803D] mr-2" aria-hidden="true"></i> Real Estate Area Converter</span>
+                                        <span class="text-[10px] font-mono text-[#15803D] font-semibold">/area-converter <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></span>
                                     </div>
                                 </a>
                             </div>
@@ -1266,51 +1358,51 @@
                 </div>
 
                 <!-- INTERACTIVE EMI DEMO WIDGET -->
-                <div class="glass-panel p-3 rounded-2xl border border-brand-500/30 shadow-xl">
+                <div class="glass-panel p-3 rounded-2xl border border-[#D5CEC0] shadow-md bg-[#FBFAF6]">
                     <div class="flex items-center justify-between mb-1">
-                        <span class="text-xs font-bold text-brand-400 uppercase tracking-wider flex items-center gap-2">
-                            <i class="fa-solid fa-sliders text-brand-400" aria-hidden="true"></i> Live Sales Table Calculator Preview
+                        <span class="text-xs font-bold text-[#172033] uppercase tracking-wider flex items-center gap-2">
+                            <i class="fa-solid fa-sliders text-[#A88432]" aria-hidden="true"></i> Live Sales Table Calculator Preview
                         </span>
-                        <span class="text-[10px] text-slate-400 font-mono">0-Error Algorithm Preview</span>
+                        <span class="text-[10px] text-[#64748B] font-mono">0-Error Algorithm Preview</span>
                     </div>
 
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-2 bg-slate-950/90 p-2 rounded-xl border border-slate-800/80 items-center">
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-2 bg-[#EEE9DE] p-2 rounded-xl border border-[#D5CEC0] items-center">
                         <div>
-                            <label for="demoAmount" class="text-[10px] text-slate-300 font-medium block mb-0.5">Loan Amount (₹ Lakhs)</label>
-                            <input type="range" id="demoAmount" min="10" max="150" value="45" class="w-full accent-brand-500 cursor-pointer" oninput="updateDemoEmi()">
-                            <div class="flex justify-between text-[10px] font-mono text-white">
+                            <label for="demoAmount" class="text-[10px] text-[#475569] font-semibold block mb-0.5">Loan Amount (₹ Lakhs)</label>
+                            <input type="range" id="demoAmount" min="10" max="150" value="45" class="w-full accent-[#A88432] cursor-pointer" oninput="updateDemoEmi()">
+                            <div class="flex justify-between text-[10px] font-mono text-[#172033]">
                                 <span>₹ 10L</span>
-                                <span id="demoAmountVal" class="text-brand-400 font-bold">₹ 45 Lakhs</span>
+                                <span id="demoAmountVal" class="text-[#A88432] font-bold">₹ 45 Lakhs</span>
                                 <span>₹ 1.5 Cr</span>
                             </div>
                         </div>
 
                         <div>
-                            <label for="demoInterest" class="text-[10px] text-slate-300 font-medium block mb-0.5">Interest Rate (% p.a.)</label>
-                            <input type="range" id="demoInterest" min="7.0" max="12.0" step="0.1" value="8.5" class="w-full accent-gold-400 cursor-pointer" oninput="updateDemoEmi()">
-                            <div class="flex justify-between text-[10px] font-mono text-white">
+                            <label for="demoInterest" class="text-[10px] text-[#475569] font-semibold block mb-0.5">Interest Rate (% p.a.)</label>
+                            <input type="range" id="demoInterest" min="7.0" max="12.0" step="0.1" value="8.5" class="w-full accent-[#A88432] cursor-pointer" oninput="updateDemoEmi()">
+                            <div class="flex justify-between text-[10px] font-mono text-[#172033]">
                                 <span>7.0%</span>
-                                <span id="demoInterestVal" class="text-gold-400 font-bold">8.5%</span>
+                                <span id="demoInterestVal" class="text-[#A88432] font-bold">8.5%</span>
                                 <span>12.0%</span>
                             </div>
                         </div>
 
                         <div>
-                            <label for="demoTenure" class="text-[10px] text-slate-300 font-medium block mb-0.5">Tenure (Years)</label>
-                            <input type="range" id="demoTenure" min="5" max="30" value="20" class="w-full accent-cyan-400 cursor-pointer" oninput="updateDemoEmi()">
-                            <div class="flex justify-between text-[10px] font-mono text-white">
+                            <label for="demoTenure" class="text-[10px] text-[#475569] font-semibold block mb-0.5">Tenure (Years)</label>
+                            <input type="range" id="demoTenure" min="5" max="30" value="20" class="w-full accent-[#2563EB] cursor-pointer" oninput="updateDemoEmi()">
+                            <div class="flex justify-between text-[10px] font-mono text-[#172033]">
                                 <span>5 Yrs</span>
-                                <span id="demoTenureVal" class="text-cyan-400 font-bold">20 Years</span>
+                                <span id="demoTenureVal" class="text-[#2563EB] font-bold">20 Years</span>
                                 <span>30 Yrs</span>
                             </div>
                         </div>
                     </div>
 
-                    <div class="mt-1.5 flex flex-wrap items-center justify-between bg-brand-950/40 border border-brand-800/40 p-1.5 rounded-xl gap-2">
-                        <div class="text-xs text-slate-300">
-                            Monthly EMI: <strong id="demoEmiResult" class="text-xs font-mono text-brand-400 font-bold ml-1">₹ 39,041 / mo</strong>
+                    <div class="mt-1.5 flex flex-wrap items-center justify-between bg-[#172033] border border-[#A88432]/40 p-2 rounded-xl gap-2 text-white">
+                        <div class="text-xs text-[#CBD5E1]">
+                            Monthly EMI: <strong id="demoEmiResult" class="text-xs font-mono text-[#C5A24A] font-bold ml-1">₹ 39,041 / mo</strong>
                         </div>
-                        <div class="text-[10px] text-slate-400 font-mono">
+                        <div class="text-[10px] text-[#CBD5E1] font-mono">
                             Total Payable: <span id="demoTotalPayable" class="text-white font-semibold">₹ 93.70 Lakhs</span>
                         </div>
                     </div>
@@ -1323,44 +1415,48 @@
             <div class="slide-content w-full">
                 <div class="flex items-center justify-between mb-2">
                     <span class="slide-eyebrow text-xs font-bold uppercase tracking-wider flex items-center gap-2">
-                        <span class="w-2 h-2 rounded-full bg-gold-400"></span> Slide 09 / Performance Digital, Website Engineering & Hosted MarTech
+                        <span class="w-2 h-2 rounded-full bg-[#A88432]"></span> Slide 09 / Performance Digital, Website Engineering & Hosted MarTech
                     </span>
-                    <span class="slide-meta text-[11px] font-mono bg-slate-900/90 px-2.5 py-0.5 rounded-full border border-gold-500/40 font-semibold shadow-inner">WAHub Server OS & 787K+ Organic Search</span>
+                    <span class="slide-meta text-[11px] font-mono bg-[#FBFAF6] px-2.5 py-0.5 rounded-full border border-[#D5CEC0] text-[#8A6820] font-semibold shadow-sm">WAHub Server OS & 787K+ Organic Search</span>
                 </div>
 
                 <div class="mb-2">
-                    <h2 class="slide-title text-xl sm:text-2xl font-bold text-white font-serif">Custom Web Architecture, In-House WAHub Server & Organic SEO</h2>
-                    <p class="slide-subtitle text-xs text-slate-200 font-light mt-0.5">Envisioned sonawanegroup.com from scratch, built custom W                <!-- MARTECH ARCHITECTURE PIPELINE DIAGRAM -->
-                <div class="surface-featured p-4 rounded-2xl mb-3 border border-gold-500/30 shadow-2xl">
+                    <h2 class="slide-title text-xl sm:text-2xl font-bold text-[#172033] font-serif">Custom Web Architecture, In-House WAHub Server & Organic SEO</h2>
+                    <p class="slide-subtitle text-xs text-[#475569] font-normal mt-0.5">Envisioned sonawanegroup.com from scratch, built custom sub-2s campaign code bases, hosted WAHub OS, and scaled organic search.</p>
+                </div>
+
+                <!-- MARTECH ARCHITECTURE PIPELINE -->
+                <div class="pipeline-panel p-4 rounded-2xl mb-3 shadow-sm">
                     <div class="flex items-center justify-between mb-3">
-                        <span class="text-[10px] font-bold text-gold-400 uppercase tracking-widest">MARTECH ARCHITECTURE PIPELINE</span>
+                        <span class="text-[10px] font-bold text-[#A88432] uppercase tracking-widest">MARTECH ARCHITECTURE PIPELINE</span>
                         <span class="evidence-tag">↗ System Architecture</span>
                     </div>
                     
                     <div class="flex flex-col md:flex-row items-center justify-between gap-2 text-center">
-                        <div class="surface-evidence p-2.5 rounded-xl flex-1 w-full border-t-2 border-t-blue-400">
-                            <div class="text-xs font-bold text-white">1. Acquisition</div>
-                            <div class="text-[10px] text-blue-300">Meta, Google & SEO</div>
+                        <div class="surface-evidence p-2.5 rounded-xl flex-1 w-full border-t-2 border-t-[#2563EB] bg-[#FBFAF6]">
+                            <div class="text-xs font-bold text-[#172033]">1. Acquisition</div>
+                            <div class="text-[10px] text-[#2563EB] font-medium">Meta, Google &amp; SEO</div>
                         </div>
-                        <div class="text-slate-500 font-bold"><i class="fa-solid fa-arrow-right hidden md:inline"></i><i class="fa-solid fa-arrow-down md:hidden"></i></div>
-                        <div class="surface-evidence p-2.5 rounded-xl flex-1 w-full border-t-2 border-t-gold-400">
-                            <div class="text-xs font-bold text-white">2. Custom Web</div>
-                            <div class="text-[10px] text-gold-300">Sub-2s Code Bases</div>
+                        <div class="text-[#A88432] font-bold"><i class="fa-solid fa-arrow-right hidden md:inline"></i><i class="fa-solid fa-arrow-down md:hidden"></i></div>
+                        <div class="surface-evidence p-2.5 rounded-xl flex-1 w-full border-t-2 border-t-[#A88432] bg-[#FBFAF6]">
+                            <div class="text-xs font-bold text-[#172033]">2. Custom Web</div>
+                            <div class="text-[10px] text-[#8A6820] font-medium">Sub-2s Code Bases</div>
                         </div>
-                        <div class="text-slate-500 font-bold"><i class="fa-solid fa-arrow-right hidden md:inline"></i><i class="fa-solid fa-arrow-down md:hidden"></i></div>
-                        <div class="surface-evidence p-2.5 rounded-xl flex-1 w-full border-t-2 border-t-emerald-400">
-                            <div class="text-xs font-bold text-white">3. Lead Capture</div>
-                            <div class="text-[10px] text-emerald-300">Web Forms & Tools</div>
+                        <div class="text-[#A88432] font-bold"><i class="fa-solid fa-arrow-right hidden md:inline"></i><i class="fa-solid fa-arrow-down md:hidden"></i></div>
+                        <div class="surface-evidence p-2.5 rounded-xl flex-1 w-full border-t-2 border-t-[#15803D] bg-[#FBFAF6]">
+                            <div class="text-xs font-bold text-[#172033]">3. Lead Capture</div>
+                            <div class="text-[10px] text-[#15803D] font-medium">Web Forms &amp; Tools</div>
                         </div>
-                        <div class="text-slate-500 font-bold"><i class="fa-solid fa-arrow-right hidden md:inline"></i><i class="fa-solid fa-arrow-down md:hidden"></i></div>
-                        <div class="surface-evidence p-2.5 rounded-xl flex-1 w-full border-t-2 border-t-gold-400">
-                            <div class="text-xs font-bold text-white">4. WAHub OS</div>
-                            <div class="text-[10px] text-gold-300">Automated WhatsApp</div>
+                        <div class="text-[#A88432] font-bold"><i class="fa-solid fa-arrow-right hidden md:inline"></i><i class="fa-solid fa-arrow-down md:hidden"></i></div>
+                        <div class="surface-evidence p-2.5 rounded-xl flex-1 w-full border-t-2 border-t-[#A88432] bg-[#FBFAF6]">
+                            <div class="text-xs font-bold text-[#172033]">4. WAHub OS</div>
+                            <div class="text-[10px] text-[#8A6820] font-medium">Automated WhatsApp</div>
                         </div>
-                        <div class="text-slate-500 font-bold"><i class="fa-solid fa-arrow-right hidden md:inline"></i><i class="fa-solid fa-arrow-down md:hidden"></i></div>
-                        <div class="surface-featured p-2.5 rounded-xl flex-1 w-full border-t-2 border-t-gold-400 bg-slate-950">
-                            <div class="text-xs font-bold text-gold-400">5. CRM & Analytics</div>
-                            <div class="text-[10px] text-slate-300">MIS Decision Data</div>
+                        <div class="text-[#A88432] font-bold"><i class="fa-solid fa-arrow-right hidden md:inline"></i><i class="fa-solid fa-arrow-down md:hidden"></i></div>
+                        <!-- OUTCOME: stays dark -->
+                        <div class="p-2.5 rounded-xl flex-1 w-full border-t-2 border-t-[#A88432] bg-[#172033] text-white">
+                            <div class="text-xs font-bold text-[#C5A24A]">5. CRM &amp; MIS</div>
+                            <div class="text-[10px] text-[#CBD5E1]">Decision Data</div>
                         </div>
                     </div>
                 </div>
@@ -1368,49 +1464,49 @@
                 <div class="grid grid-cols-1 lg:grid-cols-12 gap-3.5 items-stretch">
                     
                     <!-- Server WAHub OS Mockup & Architecture -->
-                    <div class="lg:col-span-7 surface-evidence p-3.5 rounded-3xl border border-gold-500/30 flex flex-col justify-between h-full shadow-xl">
+                    <div class="lg:col-span-7 surface-evidence p-3.5 rounded-3xl border border-[#D5CEC0] flex flex-col justify-between h-full shadow-md bg-[#FBFAF6]">
                         <div>
-                            <div class="flex items-center justify-between border-b border-slate-800 pb-2 mb-2">
+                            <div class="flex items-center justify-between border-b border-[#D5CEC0] pb-2 mb-2">
                                 <div class="flex items-center gap-2">
-                                    <i class="fa-brands fa-whatsapp text-emerald-400 text-base" aria-hidden="true"></i>
-                                    <span class="font-bold text-white text-xs">WAHub OS — Hosted on Developer Group Servers</span>
+                                    <i class="fa-brands fa-whatsapp text-[#15803D] text-base" aria-hidden="true"></i>
+                                    <span class="font-bold text-[#172033] text-xs">WAHub OS — Hosted on Developer Group Servers</span>
                                 </div>
                                 <span class="evidence-tag">↗ Self-Hosted</span>
                             </div>
 
                             <div class="space-y-2 text-xs">
-                                <div class="bg-slate-950/90 p-2 rounded-xl border border-slate-800/80">
-                                    <strong class="text-white block mb-0.5"><i class="fa-solid fa-laptop-code text-gold-400 mr-1.5" aria-hidden="true"></i> From-Scratch Website Vision</strong>
-                                    <span class="text-[11px] text-slate-300">Built sonawanegroup.com & nayakdmc.in with zero template bloat, sub-2s mobile loads, and programmatic landing pages.</span>
+                                <div class="bg-[#EEE9DE] p-2 rounded-xl border border-[#D5CEC0]">
+                                    <strong class="text-[#172033] block mb-0.5"><i class="fa-solid fa-laptop-code text-[#A88432] mr-1.5" aria-hidden="true"></i> From-Scratch Website Vision</strong>
+                                    <span class="text-[11px] text-[#475569]">Built sonawanegroup.com & nayakdmc.in with zero template bloat, sub-2s mobile loads, and programmatic landing pages.</span>
                                 </div>
 
-                                <div class="bg-slate-950/90 p-2 rounded-xl border border-slate-800/80">
-                                    <strong class="text-white block mb-0.5"><i class="fa-solid fa-bolt text-emerald-400 mr-1.5" aria-hidden="true"></i> Automated WhatsApp Drip Sequences</strong>
-                                    <span class="text-[11px] text-slate-300">Triggers instant brochure dispatches, 360 flat walkthrough videos, and Google Maps gallery location pins upon lead submission.</span>
+                                <div class="bg-[#EEE9DE] p-2 rounded-xl border border-[#D5CEC0]">
+                                    <strong class="text-[#172033] block mb-0.5"><i class="fa-solid fa-bolt text-[#15803D] mr-1.5" aria-hidden="true"></i> Automated WhatsApp Drip Sequences</strong>
+                                    <span class="text-[11px] text-[#475569]">Triggers instant brochure dispatches, 360 flat walkthrough videos, and Google Maps gallery location pins upon lead submission.</span>
                                 </div>
 
-                                <div class="bg-slate-950/90 p-2 rounded-xl border border-slate-800/80">
-                                    <strong class="text-white block mb-0.5"><i class="fa-solid fa-magnifying-glass text-gold-400 mr-1.5" aria-hidden="true"></i> Compounding Technical SEO Engine</strong>
-                                    <span class="text-[11px] text-slate-300">Generated <strong class="text-white font-mono" id="metricImpressions">787,417</strong> organic impressions & <strong class="text-white font-mono" id="metricClicks">9,684</strong> search clicks through MHADA, Metro Line 5, and BKC 2.0 educational blog hubs.</span>
+                                <div class="bg-[#EEE9DE] p-2 rounded-xl border border-[#D5CEC0]">
+                                    <strong class="text-[#172033] block mb-0.5"><i class="fa-solid fa-magnifying-glass text-[#A88432] mr-1.5" aria-hidden="true"></i> Compounding Technical SEO Engine</strong>
+                                    <span class="text-[11px] text-[#475569]">Generated <strong class="text-[#172033] font-mono" id="metricImpressions">787,417</strong> organic impressions & <strong class="text-[#172033] font-mono" id="metricClicks">9,684</strong> search clicks through MHADA, Metro Line 5, and BKC 2.0 educational blog hubs.</span>
                                 </div>
                             </div>
                         </div>
 
-                        <div class="pt-2 border-t border-slate-800 flex justify-between items-center text-[10px] text-slate-400 font-mono mt-2">
+                        <div class="pt-2 border-t border-[#D5CEC0] flex justify-between items-center text-[10px] text-[#64748B] font-mono mt-2">
                             <span>Domain Host: nayakdmc.in/wahub/dashboard</span>
-                            <span class="text-emerald-400 font-semibold">100% In-House Data Security</span>
+                            <span class="text-[#15803D] font-semibold">100% In-House Data Security</span>
                         </div>
                     </div>
 
                     <!-- Horizontal Bar Chart: Illustrative Lead-Source Mix Framework -->
-                    <div class="lg:col-span-5 surface-evidence p-3.5 rounded-3xl border border-slate-800/80 flex flex-col justify-between h-full shadow-xl">
+                    <div class="lg:col-span-5 surface-evidence p-3.5 rounded-3xl border border-[#D5CEC0] flex flex-col justify-between h-full shadow-md bg-[#FBFAF6]">
                         <div>
                             <div class="flex justify-between items-start mb-1">
                                 <div>
-                                    <div class="text-xs font-bold text-white flex items-center gap-2">
-                                        <i class="fa-solid fa-chart-bar text-gold-400" aria-hidden="true"></i> Illustrative Lead-Source Mix Framework
+                                    <div class="text-xs font-bold text-[#172033] flex items-center gap-2">
+                                        <i class="fa-solid fa-chart-bar text-[#A88432]" aria-hidden="true"></i> Illustrative Lead-Source Mix Framework
                                     </div>
-                                    <div class="text-[10px] text-slate-400 italic font-mono mt-0.5">*Example allocation model — not historical attribution.*</div>
+                                    <div class="text-[10px] text-[#64748B] italic font-mono mt-0.5">*Example allocation model — not historical attribution.*</div>
                                 </div>
                                 <span class="evidence-tag">↗ Interactive Chart</span>
                             </div>
@@ -1420,11 +1516,10 @@
                             <canvas id="crmChart"></canvas>
                         </div>
 
-                        <div class="text-[10px] text-slate-300 italic text-center border-t border-slate-800/80 pt-1.5 mt-1">
+                        <div class="text-[10px] text-[#475569] italic text-center border-t border-[#D5CEC0] pt-1.5 mt-1">
                             Managed Meta & Google ads generating 600+ monthly qualified leads with active CPL optimization.
                         </div>
                     </div>
-
                 </div>
             </div>
         </section>
@@ -1434,52 +1529,67 @@
             <div class="slide-content w-full">
                 <div class="flex items-center justify-between mb-2">
                     <span class="slide-eyebrow text-xs font-bold uppercase tracking-wider flex items-center gap-2">
-                        <span class="w-2 h-2 rounded-full bg-gold-400"></span> Slide 10 / Executive Leadership Onboarding Plan
+                        <span class="w-2 h-2 rounded-full bg-[#A88432]"></span> Slide 10 / Executive Leadership Onboarding Plan
                     </span>
-                    <span class="slide-meta text-xs text-slate-200">First 90-Day Leadership Roadmap</span>
+                    <span class="slide-meta text-xs text-[#475569] font-medium">First 90-Day Leadership Roadmap</span>
                 </div>
 
                 <div class="mb-3">
-                    <h2 class="slide-title text-xl sm:text-2xl font-bold text-white font-serif">First 90-Day Strategic Leadership Execution Plan</h2>
-                    <p class="slide-subtitle text-xs text-slate-200 font-light mt-0.5">A structured, 3-phase roadmap to audit, standardize, and scale your developer group's 360° marketing function, site gallery conversion, and pre-sales ecosystem.</p>
+                    <h2 class="slide-title text-xl sm:text-2xl font-bold text-[#172033] font-serif">First 90-Day Strategic Leadership Execution Plan</h2>
+                    <p class="slide-subtitle text-xs text-[#475569] font-normal mt-0.5">A structured, 3-phase roadmap to audit, standardize, and scale your developer group's 360° marketing function, site gallery conversion, and pre-sales ecosystem.</p>
                 </div>
 
-                <!-- 30-60-90 DAY TIMELINE -->
-                <div class="surface-card-elevated p-3.5 rounded-3xl mb-3 shadow-xl border border-gold-500/30">
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-3 items-stretch">
+                <!-- 30-60-90 DAY TIMELINE — EXECUTIVE DECISION ARGUMENT -->
+                <div class="bg-[#FBFAF6] border border-[#D5CEC0] rounded-3xl mb-3 shadow-sm overflow-hidden">
+                    <div class="grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-[#D5CEC0]">
                         
-                        <div class="surface-card p-3 rounded-2xl border-l-4 border-l-gold-400 flex flex-col justify-between h-full">
+                        <!-- PHASE 01 -->
+                        <div class="p-4 flex flex-col justify-between group relative overflow-hidden">
+                            <div class="absolute top-2 right-3 phase-number text-[#A88432]">01</div>
                             <div>
-                                <div class="text-xs font-bold text-gold-400 uppercase mb-1">DAYS 1–30: AUDIT & QUICK WINS</div>
-                                <h3 class="text-xs font-bold text-white mb-1.5">Business · Brand · Media · CRM · Digital</h3>
-                                <ul class="text-[11px] text-slate-300 space-y-1">
-                                    <li class="flex items-start"><i class="fa-solid fa-circle-check text-gold-400 mr-2 shrink-0 mt-0.5" aria-hidden="true"></i><span>Audit active ad campaigns, hoardings, print contracts, CPL trends, and web speeds.</span></li>
-                                    <li class="flex items-start"><i class="fa-solid fa-circle-check text-gold-400 mr-2 shrink-0 mt-0.5" aria-hidden="true"></i><span>Inspect sales gallery entrance flows, signage, sample flats, and Saturday readiness.</span></li>
-                                    <li class="flex items-start"><i class="fa-solid fa-circle-check text-gold-400 mr-2 shrink-0 mt-0.5" aria-hidden="true"></i><span>Align pre-sales call workflows, CRM lead fields, and UTM parameter tracking protocols.</span></li>
+                                <div class="text-[10px] font-bold text-[#A88432] uppercase tracking-widest mb-1.5 flex items-center gap-1.5">
+                                    <span class="w-3 h-px bg-[#A88432]/60"></span>Days 1–30
+                                </div>
+                                <div class="text-sm font-bold text-[#172033] mb-0.5">Audit &amp; Quick Wins</div>
+                                <div class="text-[10px] text-[#64748B] font-medium mb-2 uppercase tracking-wider">Business · Brand · Media · CRM · Digital</div>
+                                <ul class="text-[11px] text-[#475569] space-y-1.5">
+                                    <li class="flex items-start"><i class="fa-solid fa-circle-check text-[#A88432] mr-2 shrink-0 mt-0.5" aria-hidden="true"></i><span>Audit active ad campaigns, hoardings, print contracts, CPL trends, and web speeds.</span></li>
+                                    <li class="flex items-start"><i class="fa-solid fa-circle-check text-[#A88432] mr-2 shrink-0 mt-0.5" aria-hidden="true"></i><span>Inspect sales gallery entrance flows, signage, sample flats, and Saturday readiness.</span></li>
+                                    <li class="flex items-start"><i class="fa-solid fa-circle-check text-[#A88432] mr-2 shrink-0 mt-0.5" aria-hidden="true"></i><span>Align pre-sales call workflows, CRM lead fields, and UTM parameter tracking protocols.</span></li>
                                 </ul>
                             </div>
                         </div>
 
-                        <div class="surface-card p-3 rounded-2xl border-l-4 border-l-blue-400 flex flex-col justify-between h-full">
+                        <!-- PHASE 02 -->
+                        <div class="p-4 flex flex-col justify-between group relative overflow-hidden">
+                            <div class="absolute top-2 right-3 phase-number text-[#2563EB]">02</div>
                             <div>
-                                <div class="text-xs font-bold text-blue-400 uppercase mb-1">DAYS 31–60: STANDARDIZATION</div>
-                                <h3 class="text-xs font-bold text-white mb-1.5">Campaign Systems · Reporting · Processes</h3>
-                                <ul class="text-[11px] text-slate-300 space-y-1">
-                                    <li class="flex items-start"><i class="fa-solid fa-circle-check text-blue-400 mr-2 shrink-0 mt-0.5" aria-hidden="true"></i><span>Standardize collateral printing SLAs, outdoor hoarding sites, and RERA compliance.</span></li>
-                                    <li class="flex items-start"><i class="fa-solid fa-circle-check text-blue-400 mr-2 shrink-0 mt-0.5" aria-hidden="true"></i><span>Deploy sub-2s mobile web structures, 0-error calculators, and WhatsApp drip servers.</span></li>
-                                    <li class="flex items-start"><i class="fa-solid fa-circle-check text-blue-400 mr-2 shrink-0 mt-0.5" aria-hidden="true"></i><span>Activate Channel Partner portals (/partner) and resident referral engines (/referral).</span></li>
+                                <div class="text-[10px] font-bold text-[#2563EB] uppercase tracking-widest mb-1.5 flex items-center gap-1.5">
+                                    <span class="w-3 h-px bg-[#2563EB]/60"></span>Days 31–60
+                                </div>
+                                <div class="text-sm font-bold text-[#172033] mb-0.5">Standardization</div>
+                                <div class="text-[10px] text-[#64748B] font-medium mb-2 uppercase tracking-wider">Campaign Systems · Reporting · Processes</div>
+                                <ul class="text-[11px] text-[#475569] space-y-1.5">
+                                    <li class="flex items-start"><i class="fa-solid fa-circle-check text-[#2563EB] mr-2 shrink-0 mt-0.5" aria-hidden="true"></i><span>Standardize collateral printing SLAs, outdoor hoarding sites, and RERA compliance.</span></li>
+                                    <li class="flex items-start"><i class="fa-solid fa-circle-check text-[#2563EB] mr-2 shrink-0 mt-0.5" aria-hidden="true"></i><span>Deploy sub-2s mobile web structures, 0-error calculators, and WhatsApp drip servers.</span></li>
+                                    <li class="flex items-start"><i class="fa-solid fa-circle-check text-[#2563EB] mr-2 shrink-0 mt-0.5" aria-hidden="true"></i><span>Activate Channel Partner portals (/partner) and resident referral engines (/referral).</span></li>
                                 </ul>
                             </div>
                         </div>
 
-                        <div class="surface-card p-3 rounded-2xl border-l-4 border-l-emerald-400 flex flex-col justify-between h-full">
+                        <!-- PHASE 03 -->
+                        <div class="p-4 flex flex-col justify-between group relative overflow-hidden">
+                            <div class="absolute top-2 right-3 phase-number text-[#15803D]">03</div>
                             <div>
-                                <div class="text-xs font-bold text-emerald-400 uppercase mb-1">DAYS 61–90: SCALING</div>
-                                <h3 class="text-xs font-bold text-white mb-1.5">Growth Engine · CP Network · Events</h3>
-                                <ul class="text-[11px] text-slate-300 space-y-1">
-                                    <li class="flex items-start"><i class="fa-solid fa-circle-check text-emerald-400 mr-2 shrink-0 mt-0.5" aria-hidden="true"></i><span>Execute MCHI property expo pavilions, CP meets, and festive campaign launches.</span></li>
-                                    <li class="flex items-start"><i class="fa-solid fa-circle-check text-emerald-400 mr-2 shrink-0 mt-0.5" aria-hidden="true"></i><span>Publish high-intent buyer educational blogs (MHADA, Metro 5, infrastructure).</span></li>
-                                    <li class="flex items-start"><i class="fa-solid fa-circle-check text-emerald-400 mr-2 shrink-0 mt-0.5" aria-hidden="true"></i><span>Conduct weekly agency SLA audits and reallocate media spend based on site visits.</span></li>
+                                <div class="text-[10px] font-bold text-[#15803D] uppercase tracking-widest mb-1.5 flex items-center gap-1.5">
+                                    <span class="w-3 h-px bg-[#15803D]/60"></span>Days 61–90
+                                </div>
+                                <div class="text-sm font-bold text-[#172033] mb-0.5">Scaling</div>
+                                <div class="text-[10px] text-[#64748B] font-medium mb-2 uppercase tracking-wider">Growth Engine · CP Network · Events</div>
+                                <ul class="text-[11px] text-[#475569] space-y-1.5">
+                                    <li class="flex items-start"><i class="fa-solid fa-circle-check text-[#15803D] mr-2 shrink-0 mt-0.5" aria-hidden="true"></i><span>Execute MCHI property expo pavilions, CP meets, and festive campaign launches.</span></li>
+                                    <li class="flex items-start"><i class="fa-solid fa-circle-check text-[#15803D] mr-2 shrink-0 mt-0.5" aria-hidden="true"></i><span>Publish high-intent buyer educational blogs (MHADA, Metro 5, infrastructure).</span></li>
+                                    <li class="flex items-start"><i class="fa-solid fa-circle-check text-[#15803D] mr-2 shrink-0 mt-0.5" aria-hidden="true"></i><span>Conduct weekly agency SLA audits and reallocate media spend based on site visits.</span></li>
                                 </ul>
                             </div>
                         </div>
@@ -1488,36 +1598,36 @@
                 </div>
 
                 <!-- EXECUTIVE RESUME CONTACT BLOCK -->
-                <div class="surface-card-elevated p-3.5 sm:p-4 rounded-3xl border border-gold-500/40 text-center shadow-2xl">
-                    <div class="inline-flex items-center space-x-2 px-3 py-0.5 rounded-full bg-gold-500/20 text-gold-300 text-[10px] font-bold uppercase tracking-wider mb-1 border border-gold-500/30">
+                <div class="surface-card-elevated p-4 sm:p-5 rounded-3xl border border-[#A88432]/40 bg-[#FBFAF6] text-center shadow-md">
+                    <div class="inline-flex items-center space-x-2 px-3.5 py-1 rounded-full bg-[#EEE9DE] text-[#8A6820] text-xs font-bold uppercase tracking-wider mb-2 border border-[#A88432]/30">
                         <i class="fa-solid fa-handshake" aria-hidden="true"></i> CANDIDATE PROFILE & STRATEGIC INTERVIEW CONTACT
                     </div>
-                    <h3 class="text-base sm:text-lg font-bold text-white font-serif mb-0.5">READY TO DRIVE MARKETING EXCELLENCE</h3>
-                    <p class="text-[11px] text-slate-300 max-w-xl mx-auto mb-2.5 leading-relaxed">
+                    <h3 class="text-lg sm:text-xl font-bold text-[#172033] font-serif mb-1">READY TO DRIVE MARKETING EXCELLENCE</h3>
+                    <p class="text-xs sm:text-sm text-[#172033] max-w-xl mx-auto mb-4 leading-relaxed font-medium">
                         Available for senior marketing leadership roles to build 360° marketing systems, optimize media spend, and accelerate sales gallery closings.
                     </p>
 
                     <!-- EXECUTIVE EXPECTATION CARD -->
-                    <div class="mb-3 p-3 sm:p-3.5 rounded-2xl bg-[#111B2E] border border-gold-500/35 shadow-lg max-w-xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-3 text-left">
+                    <div class="mb-4 p-4 rounded-2xl bg-[#172033] border border-[#A88432]/50 shadow-xl max-w-xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-3 text-left text-white">
                         <div>
-                            <div class="text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-0.5">EXPECTATION</div>
-                            <div class="text-lg sm:text-xl font-extrabold text-[#F1D58A] font-serif tracking-tight">₹18–20 LPA</div>
-                            <div class="text-[11px] font-medium text-slate-300 font-sans mt-0.5">Expected CTC</div>
+                            <div class="text-xs font-bold text-[#C5A24A] uppercase tracking-wider mb-0.5">EXPECTATION</div>
+                            <div class="text-2xl sm:text-3xl font-extrabold text-[#C5A24A] font-serif tracking-tight">₹18–20 LPA</div>
+                            <div class="text-xs font-semibold text-slate-200 font-sans mt-0.5">Expected CTC</div>
                         </div>
-                        <p class="text-[11px] text-slate-300 font-normal leading-snug max-w-xs sm:text-right">
+                        <p class="text-xs sm:text-sm text-slate-100 font-medium leading-relaxed max-w-xs sm:text-right">
                             Flexible based on role scope, leadership responsibility, team size and overall compensation structure.
                         </p>
                     </div>
 
-                    <div class="bg-slate-950/90 p-2.5 rounded-2xl max-w-xl mx-auto border border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-3 shadow-inner">
+                    <div class="bg-[#EEE9DE] p-3 rounded-2xl max-w-xl mx-auto border border-[#D5CEC0] flex flex-col sm:flex-row items-center justify-between gap-3">
                         <div class="text-left">
-                            <div class="text-xs font-bold text-white">Yogesh Chaurasia</div>
-                            <div class="text-[10px] text-gold-400 font-medium">Senior Real Estate Marketing Leader</div>
+                            <div class="text-sm font-bold text-[#172033]">Yogesh Chaurasia</div>
+                            <div class="text-xs text-[#8A6820] font-bold">Senior Real Estate Marketing Leader</div>
                         </div>
-                        <div class="flex flex-wrap text-right text-[11px] gap-3">
-                            <a href="tel:+917977611176" class="text-gold-400 font-mono font-bold hover:underline flex items-center gap-1.5"><i class="fa-solid fa-phone" aria-hidden="true"></i> +91 7977611176</a>
-                            <a href="mailto:yogesh.chaurasia@gmail.com" class="text-slate-300 font-mono hover:underline flex items-center gap-1.5"><i class="fa-solid fa-envelope" aria-hidden="true"></i> yogesh.chaurasia@gmail.com</a>
-                            <a href="https://linkedin.com/in/chaurasiayogesh" target="_blank" rel="noopener noreferrer" class="text-blue-400 font-mono hover:underline flex items-center gap-1.5"><i class="fa-brands fa-linkedin" aria-hidden="true"></i> LinkedIn Profile</a>
+                        <div class="flex flex-wrap text-right text-xs gap-3">
+                            <a href="tel:+917977611176" class="text-[#8A6820] font-mono font-bold hover:underline flex items-center gap-1.5"><i class="fa-solid fa-phone" aria-hidden="true"></i> +91 7977611176</a>
+                            <a href="mailto:yogesh.chaurasia@gmail.com" class="text-[#172033] font-mono font-bold hover:underline flex items-center gap-1.5"><i class="fa-solid fa-envelope" aria-hidden="true"></i> yogesh.chaurasia@gmail.com</a>
+                            <a href="https://linkedin.com/in/chaurasiayogesh" target="_blank" rel="noopener noreferrer" class="text-[#2563EB] font-mono font-bold hover:underline flex items-center gap-1.5"><i class="fa-brands fa-linkedin" aria-hidden="true"></i> LinkedIn Profile</a>
                         </div>
                     </div>
                 </div>
@@ -1527,9 +1637,9 @@
     </main>
 
     <!-- FOOTER NAVIGATION CONTROLS -->
-    <footer id="deckControls" class="no-print sticky bottom-0 z-40 glass-panel border-t border-slate-800/80 px-4 py-2 sm:px-8 shadow-2xl" role="contentinfo">
+    <footer id="deckControls" class="no-print sticky bottom-0 z-40 glass-panel border-t border-[#D5CEC0] px-4 py-2 sm:px-8 shadow-md" role="contentinfo">
         <div class="max-w-7xl mx-auto flex items-center justify-between">
-            <button id="prevBtn" onclick="prevSlide()" aria-label="Go to Previous Slide" class="px-4 min-h-[46px] bg-[#111B2E] hover:bg-[#1E293B] text-[#F8FAFC] rounded-xl border border-[#334155] hover:border-[#64748B] text-xs font-semibold transition-all flex items-center gap-2 disabled:opacity-40 disabled:cursor-not-allowed cursor-pointer">
+            <button id="prevBtn" onclick="prevSlide()" aria-label="Go to Previous Slide" class="px-4 min-h-[46px] bg-[#172033] hover:bg-[#1E293B] text-[#F8FAFC] rounded-xl border border-[#334155] hover:border-[#64748B] text-xs font-semibold transition-all flex items-center gap-2 disabled:opacity-40 disabled:cursor-not-allowed cursor-pointer">
                 <i class="fa-solid fa-chevron-left" aria-hidden="true"></i> Previous
             </button>
 
@@ -1537,12 +1647,12 @@
             <div class="hidden sm:flex items-center space-x-1.5" id="dotsContainer" role="tablist" aria-label="Executive Presentation Slide Navigation"></div>
 
             <!-- Mobile Slide Counter -->
-            <div class="text-xs font-mono text-slate-300 sm:hidden flex items-center gap-1 bg-slate-950/80 px-3 py-1.5 rounded-xl border border-slate-800">
-                <span class="text-slate-400">Slide</span> <span id="mobileSlideNum" class="text-[#F1D58A] font-bold">1</span> <span class="text-slate-400">/ 10</span>
+            <div class="text-xs font-mono text-[#475569] sm:hidden flex items-center gap-1 bg-[#FBFAF6] px-3 py-1.5 rounded-xl border border-[#D5CEC0]">
+                <span class="text-[#64748B]">Slide</span> <span id="mobileSlideNum" class="text-[#7A5B15] font-bold">1</span> <span class="text-[#64748B]">/ 10</span>
             </div>
 
-            <button id="nextBtn" onclick="nextSlide()" aria-label="Go to Next Slide" class="px-5 min-h-[46px] bg-[#F1D58A] hover:bg-[#E5C572] text-[#070B14] rounded-xl shadow-md text-xs font-bold transition-all flex items-center gap-2 cursor-pointer">
-                <span>Next</span> <i class="fa-solid fa-chevron-right text-[#070B14] text-[10px]" aria-hidden="true"></i>
+            <button id="nextBtn" onclick="nextSlide()" aria-label="Go to Next Slide" class="px-5 min-h-[46px] bg-[#A88432] hover:bg-[#8F6F27] text-[#0F172A] hover:text-white rounded-xl shadow-md text-xs font-bold transition-all flex items-center gap-2 cursor-pointer">
+                <span>Next</span> <i class="fa-solid fa-chevron-right text-[#0F172A] text-[10px]" aria-hidden="true"></i>
             </button>
         </div>
     </footer>
@@ -1819,7 +1929,7 @@
             for (var i = 0; i < totalSlides; i++) {
                 (function(slideIdx) {
                     var dot = document.createElement('button');
-                    dot.className = "w-2.5 h-2.5 rounded-full transition-all duration-200 cursor-pointer focus:ring-2 focus:ring-[#D4AF5A] " + (slideIdx === 0 ? "bg-[#D4AF5A] w-6" : "bg-slate-700 hover:bg-slate-500");
+                    dot.className = "w-2.5 h-2.5 rounded-full transition-all duration-200 cursor-pointer focus:ring-2 focus:ring-[#A88432] " + (slideIdx === 0 ? "bg-[#A88432] w-6" : "bg-[#CBD5E1] hover:bg-[#94A3B8]");
                     dot.onclick = function() { showSlide(slideIdx); };
                     dot.id = 'dot-' + slideIdx;
                     dot.setAttribute('aria-label', 'Go to Slide ' + (slideIdx + 1));
@@ -1833,9 +1943,9 @@
                 var dot = document.getElementById('dot-' + i);
                 if (dot) {
                     if (i === currentSlide) {
-                        dot.className = "w-6 h-2.5 rounded-full bg-[#D4AF5A] transition-all duration-200 cursor-pointer focus:ring-2 focus:ring-[#D4AF5A]";
+                        dot.className = "w-6 h-2.5 rounded-full bg-[#A88432] transition-all duration-200 cursor-pointer focus:ring-2 focus:ring-[#A88432]";
                     } else {
-                        dot.className = "w-2.5 h-2.5 rounded-full bg-slate-700 hover:bg-slate-500 transition-all duration-200 cursor-pointer focus:ring-2 focus:ring-[#D4AF5A]";
+                        dot.className = "w-2.5 h-2.5 rounded-full bg-[#CBD5E1] hover:bg-[#94A3B8] transition-all duration-200 cursor-pointer focus:ring-2 focus:ring-[#A88432]";
                     }
                 }
             }
@@ -1976,11 +2086,15 @@
 
             if (contentEl) {
                 contentEl.innerHTML = data.steps.map(function(s, i) {
-                    var borderClass = (i === 0 || i === 1) ? 'border-t-gold-400' : (i === 2 ? 'border-t-blue-400' : 'border-t-emerald-400');
-                    var bgClass = (i === 3) ? 'surface-featured bg-slate-950' : 'surface-evidence';
+                    var borderColors = ['border-t-[#A88432]', 'border-t-[#8A6820]', 'border-t-[#2563EB]', 'border-t-[#15803D]'];
+                    var borderClass = borderColors[i] || 'border-t-[#A88432]';
+                    var isOutcome = (i === 3);
+                    var bgClass = isOutcome ? 'bg-[#172033]' : 'surface-evidence bg-[#FBFAF6]';
+                    var numColor = isOutcome ? 'text-[#15803D]' : (i === 0 ? 'text-[#A88432]' : (i === 1 ? 'text-[#8A6820]' : 'text-[#2563EB]'));
+                    var textColor = isOutcome ? 'text-[#CBD5E1] font-semibold' : 'text-[#475569]';
                     return '<div class="' + bgClass + ' p-3 rounded-xl border-t-2 ' + borderClass + '">' +
-                           '<div class="text-[10px] font-bold text-gold-400 uppercase mb-1">' + s.num + '</div>' +
-                           '<p class="text-slate-300 leading-relaxed">' + s.text + '</p>' +
+                           '<div class="text-[10px] font-bold ' + numColor + ' uppercase mb-1">' + s.num + '</div>' +
+                           '<p class="' + textColor + ' leading-relaxed">' + s.text + '</p>' +
                            '</div>';
                 }).join('');
             }
@@ -2132,7 +2246,7 @@
                     datasets: [{
                         label: 'Share of Leads (%)',
                         data: [35, 30, 20, 10, 5],
-                        backgroundColor: ['#D4AF5A', '#3B82F6', '#64748B', '#34D399', '#94A3B8'],
+                        backgroundColor: ['#A88432', '#2563EB', '#64748B', '#15803D', '#94A3B8'],
                         borderRadius: 6,
                         barThickness: isMobile ? 12 : 16
                     }]
@@ -2148,16 +2262,16 @@
                     scales: {
                         x: {
                             max: 40,
-                            grid: { color: 'rgba(255, 255, 255, 0.05)' },
+                            grid: { color: 'rgba(23, 32, 51, 0.08)' },
                             ticks: {
-                                color: '#94A3B8',
+                                color: '#475569',
                                 callback: function(val) { return val + '%'; }
                             }
                         },
                         y: {
                             grid: { display: false },
                             ticks: {
-                                color: '#F8FAFC',
+                                color: '#172033',
                                 font: { family: 'Plus Jakarta Sans', size: isMobile ? 10 : 11, weight: '600' }
                             }
                         }
@@ -2165,10 +2279,10 @@
                     plugins: {
                         legend: { display: false },
                         tooltip: {
-                            backgroundColor: '#0D1422',
+                            backgroundColor: '#172033',
                             titleColor: '#F8FAFC',
-                            bodyColor: '#D4AF5A',
-                            borderColor: 'rgba(212, 175, 90, 0.3)',
+                            bodyColor: '#C5A24A',
+                            borderColor: 'rgba(168, 132, 50, 0.4)',
                             borderWidth: 1,
                             padding: 10,
                             callbacks: {
