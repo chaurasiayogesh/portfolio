@@ -246,6 +246,11 @@
             box-shadow: 0 4px 12px rgba(212, 175, 90, 0.25);
         }
 
+        /* Dynamic Navigation Height Contract Tokens & Safe Area */
+        :root {
+            --mobile-nav-height: 56px;
+        }
+
         /* Smooth Slide Card System & Mode Architecture */
         .slide-card {
             display: none;
@@ -270,9 +275,48 @@
             justify-content: flex-start;
             padding: 1rem 0;
         }
+
+        @supports (height: 100dvh) {
+            body.mode-deck .slide-card {
+                min-height: calc(100dvh - 7.5rem);
+                max-height: calc(100dvh - 7.5rem);
+            }
+        }
+
         body.mode-deck .slide-content {
             width: 100%;
             margin-block: auto;
+        }
+
+        @media (max-width: 639px) {
+            body.mode-deck .slide-card {
+                max-height: calc(100vh - var(--mobile-nav-height, 56px) - 6.5rem) !important;
+            }
+            @supports (height: 100dvh) {
+                body.mode-deck .slide-card {
+                    max-height: calc(100dvh - var(--mobile-nav-height, 56px) - 6.5rem) !important;
+                }
+            }
+            body.mode-deck .slide-content {
+                padding-bottom: calc(var(--mobile-nav-height, 56px) + env(safe-area-inset-bottom) + 3rem) !important;
+            }
+        }
+
+        /* Keyboard Accessibility & Reduced Motion System */
+        #deckControls button:focus-visible,
+        #deckControls select:focus-visible,
+        header button:focus-visible {
+            outline: 2px solid #F1D58A !important;
+            outline-offset: 3px !important;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+                scroll-behavior: auto !important;
+            }
         }
 
         /* Continuous Report Mode Architecture */
@@ -446,11 +490,11 @@
     <div id="srAnnouncer" class="sr-only" aria-live="polite" aria-atomic="true"></div>
 
     <!-- EXECUTIVE NAVIGATION HEADER -->
-    <header class="no-print sticky top-1 z-40 glass-panel border-b border-slate-800/80 px-4 py-2.5 sm:px-8 shadow-2xl" role="banner">
-        <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-3">
+    <header class="no-print sticky top-1 z-40 glass-panel border-b border-slate-800/80 px-3 py-2 sm:px-6 shadow-2xl overflow-hidden" role="banner">
+        <div class="max-w-7xl mx-auto flex flex-wrap lg:flex-nowrap items-center justify-between gap-2">
             
             <!-- Branding / Candidate Info -->
-            <div class="flex items-center space-x-3 w-full md:w-auto justify-between md:justify-start">
+            <div class="flex items-center space-x-3 w-full lg:w-auto justify-between lg:justify-start">
                 <div class="flex items-center space-x-3">
                     <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-brand-500 via-emerald-400 to-gold-400 p-[2px] shadow-lg shadow-brand-500/20 shrink-0">
                         <div class="w-full h-full bg-slate-950 rounded-[10px] flex items-center justify-center font-serif font-bold text-lg text-gold-400">
@@ -469,7 +513,7 @@
             </div>
 
             <!-- View Switcher & Executive Narrative Selector -->
-            <div class="flex items-center justify-center space-x-2 bg-slate-900/95 p-1 rounded-xl border border-slate-800/80 shadow-inner w-full md:w-auto">
+            <div class="flex items-center justify-center space-x-2 bg-slate-900/95 p-1 rounded-xl border border-slate-800/80 shadow-inner max-w-full overflow-x-auto">
                 <button id="deckModeBtn" onclick="setMode('deck')" aria-label="Switch to Slide Deck Mode" class="mode-btn px-3 py-1.5 rounded-lg text-xs font-semibold flex items-center h-8">
                     <i class="fa-solid fa-layer-group mr-1.5" aria-hidden="true"></i> Deck Mode
                 </button>
@@ -480,7 +524,7 @@
                 <div class="h-4 w-[1px] bg-slate-800 mx-1" aria-hidden="true"></div>
 
                 <!-- Slide Selector Dropdown (10 Slides) -->
-                <select id="slideSelector" onchange="jumpToSlide(parseInt(this.value))" aria-label="Select Executive Presentation Slide" class="bg-slate-950 text-slate-200 text-xs rounded-lg px-2.5 h-8 border border-slate-800/80 focus:outline-none focus:border-gold-400 cursor-pointer max-w-[200px] sm:max-w-xs">
+                <select id="slideSelector" onchange="jumpToSlide(parseInt(this.value))" aria-label="Select Executive Presentation Slide" class="bg-slate-950 text-slate-200 text-xs rounded-lg px-2.5 h-8 border border-slate-800/80 focus:outline-none focus:border-gold-400 cursor-pointer max-w-[180px] sm:max-w-xs">
                     <option value="0">01 POSITION — Executive Thesis & Core Metrics</option>
                     <option value="1">02 PEDIGREE — 10-Year Career Scorecard</option>
                     <option value="2">03 SYSTEM — The 360° Real Estate Growth Engine</option>
@@ -495,7 +539,7 @@
             </div>
 
             <!-- Header Action Buttons -->
-            <div class="flex items-center justify-end space-x-2 w-full md:w-auto">
+            <div class="flex items-center justify-end space-x-1.5 shrink-0">
                 <button onclick="toggleExecSummaryModal()" aria-label="Open 20-Second Executive Summary" class="px-2.5 h-8 text-xs font-semibold text-slate-200 hover:text-white bg-slate-900/90 hover:bg-slate-800 rounded-lg border border-slate-800/80 transition-colors flex items-center gap-1 cursor-pointer">
                     <i class="fa-solid fa-ellipsis-vertical text-gold-400" aria-hidden="true"></i> <span class="hidden xl:inline">Summary</span>
                 </button>
@@ -505,48 +549,56 @@
                 <button onclick="window.print()" aria-label="Export or Print Portfolio PDF" class="px-3 h-8 text-xs font-medium text-slate-200 hover:text-white bg-slate-900/90 hover:bg-slate-800 rounded-lg border border-slate-800/80 transition-colors flex items-center gap-1.5 cursor-pointer">
                     <i class="fa-solid fa-file-pdf text-gold-400" aria-hidden="true"></i> <span class="hidden md:inline">Print / PDF</span>
                 </button>
-                <button onclick="jumpToSlide(9)" aria-label="Jump to First 90-Day Plan & Resume" class="px-3.5 h-8 text-xs font-bold text-slate-950 bg-gradient-to-r from-gold-400 via-amber-400 to-gold-500 hover:from-gold-300 hover:to-gold-400 rounded-lg shadow-lg shadow-gold-500/10 transition-all flex items-center gap-1.5 cursor-pointer">
+                <button onclick="jumpToSlide(9)" aria-label="Jump to First 90-Day Plan & Resume" class="px-3.5 h-8 text-xs font-bold text-slate-950 bg-gold-400 hover:bg-gold-300 rounded-lg shadow-lg shadow-gold-500/10 transition-all flex items-center gap-1.5 cursor-pointer">
                     <span>90-Day Plan</span> <i class="fa-solid fa-arrow-right text-[10px]" aria-hidden="true"></i>
                 </button>
             </div>
         </div>
     </header>
 
-    <!-- 20-SECOND EXECUTIVE SUMMARY MODAL DRAWER -->
+    <!-- 20-SECOND EXECUTIVE BRIEF MODAL DRAWER -->
     <div id="execSummaryModal" class="no-print fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-50 hidden items-center justify-center p-4" role="dialog" aria-modal="true" aria-labelledby="execModalTitle" onclick="if(event.target===this) toggleExecSummaryModal()">
         <div class="glass-panel-gold max-w-xl w-full p-5 rounded-3xl border border-gold-500/40 shadow-2xl relative stagger-animate stagger-1">
-            <button onclick="toggleExecSummaryModal()" aria-label="Close Executive Summary" class="absolute top-4 right-4 text-slate-400 hover:text-white text-sm w-7 h-7 rounded-full bg-slate-900/90 flex items-center justify-center border border-slate-800 cursor-pointer">
+            <button onclick="toggleExecSummaryModal()" aria-label="Close Executive Brief" class="absolute top-4 right-4 text-slate-400 hover:text-white text-sm w-7 h-7 rounded-full bg-slate-900/90 flex items-center justify-center border border-slate-800 cursor-pointer">
                 <i class="fa-solid fa-xmark" aria-hidden="true"></i>
             </button>
 
             <div class="inline-flex items-center space-x-2 px-3 py-0.5 rounded-full bg-gold-500/20 text-gold-300 text-[10px] font-bold uppercase tracking-wider mb-2 border border-gold-500/30">
-                <i class="fa-solid fa-user-tie" aria-hidden="true"></i> EXECUTIVE SNAPSHOT
+                <i class="fa-solid fa-user-tie" aria-hidden="true"></i> EXECUTIVE BRIEF
             </div>
 
             <h2 id="execModalTitle" class="text-xl font-bold text-white font-serif mb-0.5">Yogesh Chaurasia</h2>
-            <div class="text-xs text-gold-400 font-medium mb-3">Senior Real Estate Marketing Manager | 10+ Years Leadership</div>
+            <div class="text-xs text-gold-400 font-medium mb-3">Senior Real Estate Marketing Manager</div>
 
-            <div class="space-y-2.5 text-xs text-slate-200 mb-4">
+            <div class="space-y-2 text-xs text-slate-200 mb-4">
                 <div class="bg-slate-950/90 p-3 rounded-2xl border border-slate-800/80">
-                    <strong class="text-gold-400 uppercase tracking-wider text-[10px] block mb-1">CORE PROPOSITION</strong>
+                    <strong class="text-gold-400 uppercase tracking-wider text-[10px] block mb-1">10+ YEARS EXPERIENCE</strong>
                     <p class="text-slate-300 text-xs leading-relaxed">
-                        I connect Brand Positioning, Outdoor Media Reach, Sales Gallery Experience, CRM, and MarTech into one integrated, measurable growth ecosystem.
+                        Real estate marketing experience across developer marketing, brand positioning, ATL outdoor media, pre-sales, sales CX, CRM & MarTech.
                     </p>
                 </div>
 
-                <div class="grid grid-cols-3 gap-2 text-center">
-                    <div class="bg-slate-950/90 p-2 rounded-xl border border-slate-800/80">
-                        <div class="text-sm font-bold text-gold-400 font-mono">10+ Yrs</div>
-                        <div class="text-[10px] text-slate-400">Developer Leadership</div>
+                <div class="bg-slate-950/90 p-3 rounded-2xl border border-slate-800/80">
+                    <strong class="text-gold-400 uppercase tracking-wider text-[10px] block mb-1">CORE STRENGTH</strong>
+                    <p class="text-slate-300 text-xs font-semibold">
+                        Connecting marketing strategy with sales gallery execution.
+                    </p>
+                </div>
+
+                <div class="bg-slate-950/90 p-2.5 rounded-2xl border border-slate-800/80 text-center">
+                    <strong class="text-slate-400 uppercase tracking-wider text-[10px] block mb-1">WHAT I BRING</strong>
+                    <div class="text-[11px] font-mono text-gold-300 font-bold">
+                        Brand → Reach → CX → Pre-Sales → CRM → MarTech
                     </div>
-                    <div class="bg-slate-950/90 p-2 rounded-xl border border-slate-800/80">
-                        <div class="text-sm font-bold text-white font-mono">5+</div>
-                        <div class="text-[10px] text-slate-400">Developer Ecosystems</div>
+                </div>
+
+                <!-- EXPECTATION CARD -->
+                <div class="p-3 rounded-2xl bg-[#111B2E] border border-gold-500/35 flex items-center justify-between gap-2">
+                    <div>
+                        <div class="text-[10px] font-bold text-slate-400 uppercase tracking-wider">EXPECTED CTC</div>
+                        <div class="text-base font-extrabold text-[#F1D58A] font-serif">₹18–20 LPA</div>
                     </div>
-                    <div class="bg-slate-950/90 p-2 rounded-xl border border-slate-800/80">
-                        <div class="text-sm font-bold text-emerald-400 font-mono">787K+</div>
-                        <div class="text-[10px] text-slate-400">Organic SEO</div>
-                    </div>
+                    <div class="text-[11px] text-slate-300 text-right font-medium">Flexible based on scope</div>
                 </div>
             </div>
 
@@ -557,7 +609,7 @@
                 <button onclick="toggleExecSummaryModal(); jumpToSlide(8);" class="px-3.5 py-1.5 bg-slate-900 hover:bg-slate-800 text-slate-200 text-xs font-semibold rounded-xl border border-slate-800 transition-colors">
                     MarTech & Code
                 </button>
-                <button onclick="toggleExecSummaryModal(); jumpToSlide(9);" class="px-4 py-1.5 bg-gradient-to-r from-gold-400 via-amber-400 to-gold-500 text-slate-950 text-xs font-bold rounded-xl shadow-md transition-all">
+                <button onclick="toggleExecSummaryModal(); jumpToSlide(9);" class="px-4 py-1.5 bg-gold-400 hover:bg-gold-300 text-slate-950 text-xs font-bold rounded-xl shadow-md transition-all">
                     90-Day Plan
                 </button>
             </div>
@@ -574,7 +626,7 @@
 
                 <div class="inline-flex items-center space-x-2 px-3.5 py-1 rounded-full bg-slate-900/90 border border-gold-500/40 text-gold-400 text-xs font-semibold mb-3 shadow-lg shadow-gold-500/5">
                     <i class="fa-solid fa-user-tie text-[11px]" aria-hidden="true"></i>
-                    <span class="tracking-wider uppercase text-[10px] sm:text-xs">10+ YEARS REAL ESTATE MARKETING LEADERSHIP</span>
+                    <span class="tracking-wider uppercase text-[10px] sm:text-xs">10+ YEARS REAL ESTATE MARKETING EXPERIENCE</span>
                 </div>
 
                 <h1 class="text-4xl sm:text-6xl md:text-7xl font-extrabold text-white tracking-tight leading-tight max-w-4xl font-serif">
@@ -585,14 +637,14 @@
                 </p>
 
                 <p class="mt-4 text-sm sm:text-base text-slate-200 max-w-3xl font-normal leading-relaxed">
-                    I connect Brand Positioning, Media Reach, Sales CX, CRM, and MarTech into one measurable growth ecosystem.
+                    I connect brand positioning, media reach, sales experience, CRM and MarTech into one measurable growth ecosystem.
                 </p>
 
-                <!-- 4 High-Impact Executive KPI Counter Pills (Editorial Alignment) -->
+                <!-- 4 High-Impact Executive KPI Counter Pills (Scannability & Factual Accuracy) -->
                 <div class="grid grid-cols-2 md:grid-cols-4 gap-3 mt-8 w-full max-w-4xl">
                     <div class="surface-featured p-4 text-center">
                         <div class="text-2xl sm:text-3xl font-extrabold text-gold-400 font-mono">10+ Years</div>
-                        <div class="text-xs text-slate-300 font-medium mt-1">Developer Leadership</div>
+                        <div class="text-xs text-slate-300 font-medium mt-1">Real Estate Experience</div>
                     </div>
                     <div class="surface-evidence p-4 text-center">
                         <div class="text-2xl sm:text-3xl font-extrabold text-white font-mono">5+</div>
@@ -604,12 +656,12 @@
                     </div>
                     <div class="surface-featured p-4 text-center">
                         <div class="text-2xl sm:text-3xl font-extrabold text-gold-400 font-mono">360°</div>
-                        <div class="text-xs text-slate-300 font-medium mt-1">Full-Spectrum System</div>
+                        <div class="text-xs text-slate-300 font-medium mt-1">Marketing Ownership</div>
                     </div>
                 </div>
 
                 <div class="mt-8 flex flex-col sm:flex-row gap-3 items-center">
-                    <button onclick="nextSlide()" aria-label="Explore Leadership Journey" class="px-8 py-3 bg-gradient-to-r from-gold-400 via-gold-300 to-gold-500 hover:from-gold-300 hover:to-gold-400 text-slate-950 text-xs font-bold rounded-xl shadow-xl shadow-gold-500/20 transition-all flex items-center gap-2 group cursor-pointer focus:ring-2 focus:ring-gold-400">
+                    <button onclick="nextSlide()" aria-label="Explore Leadership Journey" class="px-8 py-3 bg-gold-400 hover:bg-gold-300 text-slate-950 text-xs font-bold rounded-xl shadow-xl shadow-gold-500/20 transition-all flex items-center gap-2 group cursor-pointer focus:ring-2 focus:ring-gold-400">
                         <span>Explore Leadership Journey</span>
                         <i class="fa-solid fa-arrow-right group-hover:translate-x-1 transition-transform text-slate-950" aria-hidden="true"></i>
                     </button>
@@ -1475,21 +1527,22 @@
     </main>
 
     <!-- FOOTER NAVIGATION CONTROLS -->
-    <footer id="deckControls" class="no-print sticky bottom-0 z-40 glass-panel border-t border-slate-800/80 px-4 py-2.5 sm:px-8 shadow-2xl" role="contentinfo">
+    <footer id="deckControls" class="no-print sticky bottom-0 z-40 glass-panel border-t border-slate-800/80 px-4 py-2 sm:px-8 shadow-2xl" role="contentinfo">
         <div class="max-w-7xl mx-auto flex items-center justify-between">
-            <button id="prevBtn" onclick="prevSlide()" aria-label="Go to Previous Slide" class="px-4 h-8 bg-slate-900/90 hover:bg-slate-800 text-slate-200 hover:text-white rounded-xl border border-slate-800/80 text-xs font-semibold transition-all flex items-center gap-2 disabled:opacity-40 disabled:cursor-not-allowed cursor-pointer focus:ring-2 focus:ring-brand-500">
+            <button id="prevBtn" onclick="prevSlide()" aria-label="Go to Previous Slide" class="px-4 min-h-[46px] bg-[#111B2E] hover:bg-[#1E293B] text-[#F8FAFC] rounded-xl border border-[#334155] hover:border-[#64748B] text-xs font-semibold transition-all flex items-center gap-2 disabled:opacity-40 disabled:cursor-not-allowed cursor-pointer">
                 <i class="fa-solid fa-chevron-left" aria-hidden="true"></i> Previous
             </button>
 
-            <!-- Navigation Dots -->
+            <!-- Navigation Dots (Desktop) -->
             <div class="hidden sm:flex items-center space-x-1.5" id="dotsContainer" role="tablist" aria-label="Executive Presentation Slide Navigation"></div>
 
-            <div class="text-xs font-mono text-slate-300 sm:hidden">
-                Slide <span id="mobileSlideNum" class="text-brand-400 font-bold">1</span> / 10
+            <!-- Mobile Slide Counter -->
+            <div class="text-xs font-mono text-slate-300 sm:hidden flex items-center gap-1 bg-slate-950/80 px-3 py-1.5 rounded-xl border border-slate-800">
+                <span class="text-slate-400">Slide</span> <span id="mobileSlideNum" class="text-[#F1D58A] font-bold">1</span> <span class="text-slate-400">/ 10</span>
             </div>
 
-            <button id="nextBtn" onclick="nextSlide()" aria-label="Go to Next Slide" class="px-5 h-8 bg-gradient-to-r from-gold-400 via-amber-400 to-gold-500 hover:from-gold-300 hover:to-gold-400 text-slate-950 rounded-xl shadow-md text-xs font-bold transition-all flex items-center gap-2 cursor-pointer focus:ring-2 focus:ring-gold-400">
-                <span>Next</span> <i class="fa-solid fa-chevron-right text-slate-950 text-[10px]" aria-hidden="true"></i>
+            <button id="nextBtn" onclick="nextSlide()" aria-label="Go to Next Slide" class="px-5 min-h-[46px] bg-[#F1D58A] hover:bg-[#E5C572] text-[#070B14] rounded-xl shadow-md text-xs font-bold transition-all flex items-center gap-2 cursor-pointer">
+                <span>Next</span> <i class="fa-solid fa-chevron-right text-[#070B14] text-[10px]" aria-hidden="true"></i>
             </button>
         </div>
     </footer>
@@ -1568,10 +1621,32 @@
             }
         }
 
+        function updateMobileNavHeight() {
+            var controls = document.getElementById('deckControls');
+            if (!controls) return;
+            var height = controls.getBoundingClientRect().height;
+            document.documentElement.style.setProperty('--mobile-nav-height', Math.ceil(height) + 'px');
+        }
+
+        function initMobileNavHeightObserver() {
+            var controls = document.getElementById('deckControls');
+            if (!controls) return;
+            
+            updateMobileNavHeight();
+            if ('ResizeObserver' in window) {
+                var observer = new ResizeObserver(updateMobileNavHeight);
+                observer.observe(controls);
+            }
+
+            window.addEventListener('resize', updateMobileNavHeight, { passive: true });
+            window.addEventListener('orientationchange', updateMobileNavHeight, { passive: true });
+        }
+
         function initApp() {
             if (appInitialized) return;
             appInitialized = true;
 
+            initMobileNavHeightObserver();
             renderDots();
             
             // Set initial mode on body
@@ -1606,6 +1681,7 @@
                 if (deckBtn) deckBtn.classList.add('active');
                 if (reportBtn) reportBtn.classList.remove('active');
                 if (deckControls) deckControls.style.display = 'block';
+                updateMobileNavHeight();
                 
                 slides.forEach(function(slide, idx) {
                     if (idx === currentSlide) {
